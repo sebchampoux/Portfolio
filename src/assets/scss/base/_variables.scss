@@ -1,0 +1,59 @@
+/* ================================================================================
+  Variables globales du CSS (ex. couleurs, dimensions...)
+================================================================================ */
+
+/* Couleurs */
+
+$color-dark-primary: #222831;
+$color-light-primary: #f2f2f2;
+$color-light-secondary: #d1d4da;
+$color-neutral-primary: #fff;
+$color-accent-primary: #2bb3c0;
+$color-accent-secondary: #f96d00;
+
+
+/* Textes et polices */
+
+$font-family-title-primary: 'Oswald', 'arial narrow', sans-serif;
+$font-family-title-secondary: $font-family-title-primary;
+$font-family-body: 'Raleway', sans-serif;
+
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$font-size-title-1: calculateRem(48px);
+$font-size-title-2: calculateRem(42px);
+$font-size-title-3: calculateRem(36px);
+$font-size-title-4: calculateRem(32px);
+$font-size-title-5: calculateRem(24px);
+$font-size-title-6: calculateRem(18px);
+$font-size-body: calculateRem(16px);
+$font-size-smaller: calculateRem(14px);
+$font-size-smallest: calculateRem(12px);
+
+/* Autres */
+
+$nav-height: calculateRem(70px);
+$navBottomHeight: calculateRem(50px);
+
+$z-index: (
+        1:          9000,
+        2:          7000,
+        3:          5000,
+        4:          3000,
+        5:          1000,
+        default:    1,
+        11:         -1,
+        12:         -1000,
+        13:         -2000,
+        14:         -3000,
+        15:         -4000
+);
+
+@function zindexes($index){
+  @if(map-has_key($z-index, $index)){
+    @return map_get($z-index, $index);
+  }
+}
+

@@ -1,0 +1,31 @@
+/* ================================================================================
+  Quelques fonctions SASS utiles
+================================================================================ */
+
+/*
+  Converti une dimension pixels => rem
+*/
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+
+/*
+  Media query pour écrans de dimension <= à la dimension spécifiée dans $bp
+*/
+@mixin at-most($bp) {
+  @media screen and (max-width: $bp) {
+    @content;
+  }
+}
+
+
+/*
+  Media query pour écrans de dimension >= à la dimension spécifiée dans $bp
+*/
+@mixin at-least($bp) {
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
