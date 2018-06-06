@@ -1,0 +1,25 @@
+.site-name {
+	margin: 0;
+}
+
+.site-name__link {
+	color: $color-dark-primary;
+	font-size: $font-size-title-2;
+
+	display: flex;
+	align-items: center;
+	height: 100%;
+	
+	&:hover {
+		text-decoration: none;
+		color: #000;
+	}
+
+	@include at-most(bp('sm')) {
+		font-size: $font-size-title-3;
+	}
+
+	@include at-most(400px) {
+		font-size: $font-size-title-4;
+	}
+}

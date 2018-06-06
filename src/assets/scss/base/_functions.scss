@@ -1,0 +1,29 @@
+/* ============================
+	Quelques fonctions utiles
+============================ */
+
+/**
+	Converti une dimension pixels => rem
+ */
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+/**
+	Retourne un z-index
+ */
+@function zindexes($index) {
+	@if(map_has_key($z-index, $index)) {
+		@return map_get($z-index, $index);
+	}
+}
+
+/**
+	Retourne le breakpoint demandé
+ */
+@function bp($bp) {
+	@if(map_has_key($grid-breakpoints, $bp)) {
+		@return map_get($grid-breakpoints, $bp);
+	}
+}

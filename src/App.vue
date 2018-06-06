@@ -1,13 +1,17 @@
 <template>
-
+	<div class="page">
+		<main-nav></main-nav>
+	</div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+	import MainNav from "./shared/main-nav";
+
+	export default {
+		name: 'app',
+		components: {MainNav}
+	}
 </script>
 
-<style lang="scss">
-
-</style>
+<style src="./assets/fontello/css/portfolio.css"></style>
+<style lang="scss">@import "assets/scss/main";</style>
