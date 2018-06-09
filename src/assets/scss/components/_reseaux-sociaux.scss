@@ -1,0 +1,52 @@
+.reseaux-sociaux {
+	padding: 0;
+	margin: 0;
+
+	display: flex;
+	flex-flow: row wrap;
+
+	list-style-type: none;
+}
+
+// Elems
+.reseaux-sociaux__item {
+	margin: 0;
+	padding: 0;
+}
+
+.reseaux-sociaux__link {
+	display: block;
+	padding: 15px 25px;
+
+	color: $color-dark-primary;
+	font-size: $font-size-title-2;
+
+	&:hover {
+		color: $color-accent-primary;
+	}
+}
+
+// Mods
+.reseaux-sociaux__link--linked-in {
+	&:hover {
+		color: #0077b5;
+	}
+}
+
+.reseaux-sociaux__link--behance {
+	&:hover {
+		color: #1769ff;
+	}
+}
+
+.reseaux-sociaux__link--youtube {
+	&:hover {
+		color: #ff0000;
+	}
+}
+
+.reseaux-sociaux__link--pinterest {
+	&:hover {
+		color: #bd081c;
+	}
+}
