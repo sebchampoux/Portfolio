@@ -1,5 +1,5 @@
 /**
- * Configuration du site
+ * Paramètres globaux au site (ex. URL de l'API Rest)
  */
 export const config = {
 	/**

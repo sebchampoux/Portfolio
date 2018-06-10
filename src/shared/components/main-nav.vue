@@ -1,7 +1,7 @@
 <template>
 	<nav
 			class="main-nav page__main-nav"
-			:class="{'main-nav--page-scrolled': pageIsScrolled}">
+			:class="{'main-nav--page-scrolled': showMenuShadow}">
 		<div class="container-fluid main-nav__container">
 			<!-- Mon nom -->
 			<h1 class="site-name main-nav__site-name">
@@ -24,9 +24,9 @@
 							<a :href="reseauSocial.link"
 							   target="_blank"
 							   rel="noopener"
-							   class="reseaux-sociaux__link"
-							   :title="reseauSocial.siteName"
-							   :class="[reseauSocial.itemClass]">
+							   class="reseaux-sociaux__link reseaux-sociaux__link--size--small"
+							   :class="[reseauSocial.itemClass]"
+							   :title="reseauSocial.siteName">
 								<i
 										class="reseaux-sociaux__icon"
 										:class="[reseauSocial.iconClass]">
@@ -41,7 +41,7 @@
 			<div
 					class="hamburger main-nav__hamburger hamburger--collapse"
 					:class="{'is-active': hamburgerIsOpen}"
-					@click="hamburgerIsOpen = !hamburgerIsOpen">
+					@click="toggleHamburger">
 				<div class="hamburger-box">
 					<div class="hamburger-inner"></div>
 				</div>
@@ -53,14 +53,13 @@
 <script>
 	import {store} from "../../store/store";
 	import {MenuItem} from "../classes/menu-item";
-	import {ReseauSocial} from "../classes/reseau-social";
 
 	export default {
 		name: "main-nav",
 		data() {
 			return {
 				mobileMenuBreakpoint: 992,              // Point à partir duquel on tombe au menu mobile
-				showMenuShadowPoint: 300,               // Point à partir duquel on mets l'ombre sous le menu
+				showMenuShadowPoint: 150,               // Point à partir duquel on mets l'ombre sous le menu
 				hamburgerIsOpen: false,
 				socialNetworks: store.socialNetworks,
 				menuItems: [
@@ -97,12 +96,20 @@
 				]
 			};
 		},
+		methods: {
+			/**
+			 * Ouvre/ferme l'icône hamburger
+			 */
+			toggleHamburger() {
+				this.hamburgerIsOpen = !this.hamburgerIsOpen;
+			}
+		},
 		computed: {
 			/**
-			 * Détermine si la page a été scrollée ou si elle est à 0 afin de rajouter une classe au menu
+			 * Détermine si la page a été scrollée ou non afin de rajouter une classe au menu
 			 * @returns {boolean}
 			 */
-			pageIsScrolled() {
+			showMenuShadow() {
 				return store.browserWindow.scroll >= this.showMenuShadowPoint;
 			},
 

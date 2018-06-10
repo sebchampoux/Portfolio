@@ -32,37 +32,6 @@
 	}
 }
 
-.main-nav__menu {
-	height: 100%;
-
-	@include at-most(bp($nav-mobileBP)) {
-		height: auto;
-	}
-}
-
-.main-nav__reseaux-sociaux {
-
-	.reseaux-sociaux__link {
-		font-size: $font-size-title-4;
-		padding: 15px;
-	}
-
-	@include at-least(bp($nav-mobileBP)) {
-		display: none;
-	}
-}
-
-.main-nav__hamburger {
-	position: absolute;
-	right: 0;
-	top: 50%;
-	transform: translateY(-50%);
-
-	@include at-least(bp($nav-mobileBP)) {
-		display: none;
-	}
-}
-
 // Modifiers
 .main-nav--page-scrolled {
 	@extend %drop-shadow;
