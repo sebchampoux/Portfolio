@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "animate.css": "^3.6.1",
+    "object-fit-images": "^3.2.3",
     "vue": "^2.5.11"
   },
   "browserslist": [
