@@ -21,6 +21,8 @@
 	color: $color-dark-primary;
 	font-size: $font-size-title-2;
 
+	transition: 0.15s color ease-out;
+
 	&:hover {
 		color: $color-accent-primary;
 	}

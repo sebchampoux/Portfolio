@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import MainNav from "./shared/main-nav";
+	import MainNav from "./shared/components/main-nav";
 
 	export default {
 		name: 'app',
