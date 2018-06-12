@@ -1,9 +1,18 @@
 <template>
-	<header class="hero-area page__hero-area">
+	<header class="hero-area hero-area--top-nav-padding page__hero-area">
 		<img :src="featuredImg.src" :alt="featuredImg.alt" class="hero-area__feat-img">
 
 		<div class="container hero-area__container">
-
+			<div class="row hero-area__row">
+				<div class="col-md-8 col-sm-10">
+					<div class="text-box text-box--content-centered hero-area__text-box">
+						<h1 class="text-box__title">Sébastien Champoux</h1>
+						<div class="text-box__separation"></div>
+						<h2 class="text-box__subtitle">Intégrateur et développeur web</h2>
+						<a href="javascript:;" class="button">Mes projets</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</header>
 </template>
@@ -12,10 +21,10 @@
 <script>
 	export default {
 		name: "hero-area",
-		data () {
+		data() {
 			return {
 				featuredImg: {
-					src: '../assets/imgs/hero-area__feat-img.jpg',
+					src: './src/assets/imgs/hero-area__feat-img.jpg',
 					alt: 'Leviathan @ Canada\'s Wonderland'
 				}
 			};

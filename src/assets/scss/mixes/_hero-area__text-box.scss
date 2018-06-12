@@ -1,0 +1,6 @@
+.hero-area__text-box {
+
+	@include at-most(bp(sm)) {
+		margin-top: -80px;
+	}
+}
