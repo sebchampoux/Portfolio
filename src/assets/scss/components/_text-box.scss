@@ -29,7 +29,7 @@
 
 // Elems
 .text-box__title {
-	letter-spacing: 4px;
+	letter-spacing: 6px;
 	font-weight: $font-weight-bold;
 
 	@include at-most(bp(sm)) {

@@ -1,0 +1,49 @@
+.back-to-top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: $backToTop-dimensions;
+	height: $backToTop-dimensions;
+
+	background-color: $color-light-primary;
+	border-radius: 50%;
+
+	position: relative;
+
+	transition: 0.15s all ease-out;
+
+	&::after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		border: 1px solid $color-dark-primary;
+		border-radius: 50%;
+
+		position: absolute;
+		left: -3px;
+		top: -3px;
+
+		pointer-events: none;
+
+		transition: inherit;
+	}
+
+	&:hover {
+		&::after {
+			left: 0;
+			top: 0;
+		}
+	}
+
+	&:active {
+		background-color: darken($color-light-primary, 5%);
+	}
+}
+
+
+// Elems
+.back-to-top__icon {
+	color: $color-dark-primary;
+	font-size: $font-size-title-6;
+}

@@ -57,3 +57,8 @@ $z-index: (
 $nav-height: calculateRem(80px);
 $nav-bgcolor: $color-neutral-primary;
 $nav-mobileBP: 'lg';
+
+// Back to top
+$backToTop-dimensions: 60px;
+$backToTop-bgColor: $color-light-primary;
+$backToTop-pageOffset: 20px;

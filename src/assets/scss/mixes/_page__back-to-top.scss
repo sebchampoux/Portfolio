@@ -1,0 +1,6 @@
+.page__back-to-top {
+	position: fixed;
+	bottom: $backToTop-pageOffset;
+	right: $backToTop-pageOffset;
+	z-index: zindexes(overlay);
+}
