@@ -2,6 +2,8 @@
 	background-color: $color-light-primary;
 	padding: 80px 0 0;
 	position: relative;
+
+	overflow: hidden;
 }
 
 
@@ -39,6 +41,16 @@
 		height: 85%;
 
 		pointer-events: none;
+
+		@include at-most(bp(xl)) {
+			height: 60%;
+		}
+
+		@include at-most(bp(lg)) {
+			height: 55%;
+			width: 105%;
+			left: -2.5%;
+		}
 
 		@include at-most(bp(md)) {
 			content: none;

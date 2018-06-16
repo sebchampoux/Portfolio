@@ -44,6 +44,7 @@ $grid-breakpoints: (
 $z-index: (
 		under: -999,
 		default: 1,
+		sectionCache: 5,
 		overcontent: 2000,
 		dropdown: 3000,
 		overlay: 4000,

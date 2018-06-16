@@ -1,5 +1,7 @@
 <template>
 	<section class="a-propos">
+		<img src="../assets/svg/background_montagneRusse1.svg" alt="" class="bg-coaster a-propos__bg-coaster">
+
 		<div class="container a-propos__container">
 			<div class="row">
 				<article class="col-lg-5 col-md-6 a-propos__text-wrapper">
