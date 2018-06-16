@@ -6,7 +6,7 @@
 		<a
 				href="javascript:;"
 				class="back-to-top page__back-to-top"
-				v-if="isVisible">
+				v-show="isVisible">
 			<i class="back-to-top__icon icon-up"></i>
 		</a>
 	</transition>

@@ -30,38 +30,70 @@
 	align-items: center;
 
 	height: 100%;
+	overflow: hidden;
 
 	color: $color-dark-primary;
 
 	position: relative;
 
-	//&::before,
-	//&::after {
-	//	content: '';
-	//	display: block;
-	//	width: 100%;
-	//	height: 3px;
-	//
-	//	position: absolute;
-	//
-	//	top: calc(50% + 6px);
-	//	transition: 0.3s all ease-out;
-	//}
-
-	&::before {
-		//background-color: $nav-bgcolor;
-	}
-
-	//&::after {
-	//	background-color: $color-dark-primary;
-	//	left: 0;
-	//}
+	transition: $navItem-hover-transitionSpeed all ease-out;
 
 	&:hover {
 		color: $color-dark-primary;
 		text-decoration: none;
 	}
 
+	// Pseudo-éléments pour les effets de hover
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 3px;
+
+		position: absolute;
+		top: calc(50% + 10px);
+		left: 0;
+
+		transform-origin: left center;
+
+		transition: inherit;
+	}
+
+	// Hover desktop
+	@include at-least(bp($nav-mobileBP)) {
+		&::before {
+			background-color: $color-dark-primary;
+
+			transform: scaleX(0);
+
+			transition-duration: 0s;
+			transition-delay: $navItem-hover-transitionSpeed;
+		}
+
+		&::after {
+			background-color: $nav-bgcolor;
+
+			transform: scaleX(1);
+			transition-duration: $navItem-hover-transitionSpeed;
+		}
+
+		&:hover {
+			&::before {
+				transform: scaleX(1);
+
+				transition-duration: $navItem-hover-transitionSpeed;
+				transition-delay: 0s;
+			}
+
+			&::after {
+				transform: scaleX(0);
+				transition-duration: 0s;
+			}
+		}
+	}
+
+	// Mobile incluant hover
 	@include at-most(bp($nav-mobileBP)) {
 		height: auto;
 		padding: 15px 20px;
@@ -69,6 +101,27 @@
 		font-size: $font-size-title-4;
 		font-weight: $font-weight-bold;
 		line-height: 115%;
+
+		&::after {
+			content: none;
+		}
+
+		&::before {
+			background-color: $color-dark-primary;
+			width: 40px;
+
+			top: 50%;
+			transform: translateY(-50%) scaleX(0);
+			left: 0;
+		}
+
+		&:hover {
+			padding-left: 60px;
+
+			&::before {
+				transform: translateY(-50%) scaleX(1);
+			}
+		}
 	}
 }
 

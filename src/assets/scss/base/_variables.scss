@@ -57,6 +57,7 @@ $z-index: (
 $nav-height: calculateRem(80px);
 $nav-bgcolor: $color-neutral-primary;
 $nav-mobileBP: 'lg';
+$navItem-hover-transitionSpeed: 0.25s;
 
 // Back to top
 $backToTop-dimensions: 60px;
