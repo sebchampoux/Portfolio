@@ -1,0 +1,48 @@
+.fiche-projet {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	background-color: $color-dark-primary;
+
+	position: relative;
+
+	@include at-most(bp($ficheProjet-mobileBP)) {
+		flex-direction: column;
+	}
+}
+
+
+// Elems
+.fiche-projet__img {
+	width: 45%;
+	height: 350px;
+
+	@extend %responsive-image;
+
+	position: relative;
+
+	@include at-least(bp($ficheProjet-mobileBP)) {
+		top: -15px;
+		left: -10px;
+	}
+
+	@include at-most(bp($ficheProjet-mobileBP)) {
+		width: 100%;
+		height: 350px;
+	}
+}
+
+
+// Mods
+.fiche-projet--layout--inverted {
+	@include at-least(bp($ficheProjet-mobileBP)) {
+		.fiche-projet__img {
+			order: 1;
+			top: auto;
+			left: auto;
+			bottom: -15px;
+			right: -10px;
+		}
+	}
+}

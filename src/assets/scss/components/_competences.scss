@@ -1,0 +1,31 @@
+.competences {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+// Elems
+.competences__item {
+	padding: 0;
+	margin: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.competences__icon {
+	max-height: 50px;
+	max-width: 10%;
+}
+
+.competences__bande {
+	width: 87%;
+	background-color: $color-neutral-primary;
+	height: 15px;
+}
+
+.competences__bande-fill {
+	height: 100%;
+	background-color: $color-accent-secondary;
+}

@@ -35,6 +35,7 @@
 	&:hover {
 		color: $color-light-primary;
 		text-decoration: none;
+		cursor: pointer;
 
 		&::after {
 			top: 0;
@@ -48,8 +49,46 @@
 }
 
 
+// Elems
+.button__icon {
+	margin-right: $button-iconMargin;
+}
+
+
 // Mods
 .button--size--full {
 	width: 100%;
 	padding: 25px 0;
+}
+
+.button--size-small {
+	font-size: calculateRem(18px);
+	padding: 15px 30px;
+}
+
+.button--link {
+	background-color: transparent;
+	padding: 10px 0;
+
+	color: $color-accent-primary;
+	font-weight: $font-weight-bold;
+	letter-spacing: normal;
+
+	&:hover {
+		color: darken($color-accent-primary, 5%);
+	}
+
+	&:active {
+		background-color: transparent;
+		color: darken($color-accent-primary, 10%);
+	}
+
+	&::after {
+		content: none;
+	}
+}
+
+.button__icon--after-text {
+	margin-right: 0;
+	margin-left: $button-iconMargin;
 }

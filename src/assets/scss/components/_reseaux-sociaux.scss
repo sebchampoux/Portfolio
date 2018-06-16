@@ -19,16 +19,21 @@
 	padding: 15px 25px;
 
 	color: $color-dark-primary;
-	font-size: $font-size-title-2;
+	font-size: $font-size-title-1;
 
 	transition: 0.15s color ease-out;
 
 	&:hover {
 		color: $color-accent-primary;
+		text-decoration: none;
 	}
 }
 
 // Mods
+.reseaux-sociaux--icons-centered {
+	justify-content: center;
+}
+
 .reseaux-sociaux__link--linked-in {
 	&:hover {
 		color: #0077b5;
@@ -56,4 +61,8 @@
 .reseaux-sociaux__link--size--small {
 	font-size: $font-size-title-4;
 	padding: 15px;
+}
+
+.reseaux-sociaux__link--color--inverted {
+	color: $color-light-primary;
 }

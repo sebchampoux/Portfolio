@@ -1,0 +1,34 @@
+.competences-distinctions {
+	background-color: $color-light-primary;
+	position: relative;
+	overflow: hidden;
+}
+
+
+// Elems
+.competences-distinctions__container {
+	margin: 40px auto;
+}
+
+.competences-distinctions__title-wrapper {
+	display: flex;
+	align-items: center;
+
+	margin-bottom: 30px;
+}
+
+.competences-distinctions__title-icon {
+	height: 100px;
+	margin-right: 20px;
+}
+
+.competences-distinctions__title {
+	@extend %underlined-title;
+
+	@include at-most(bp(lg)) {
+		font-size: $font-size-title-3;
+	}
+}
+
+
+// Mods

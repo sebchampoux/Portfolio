@@ -1,0 +1,41 @@
+.distinctions {
+	padding: 0;
+	margin: 0;
+
+	list-style-type: none;
+}
+
+// Elems
+.distinctions__item {
+	position: relative;
+}
+
+.distinctions__item-titre {
+	@extend .h4;
+
+	margin-bottom: 5px;
+
+	@include at-most(bp(lg)) {
+		font-size: $font-size-title-6;
+	}
+}
+
+.distinctions__item-description {
+	color: rgba($color-dark-primary, 0.7);
+	padding-left: 30px;
+	max-width: 80%;
+
+}
+
+.distinctions__item-annee {
+	@extend .h4;
+	font-weight: $font-weight-light;
+
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	@include at-most(bp(lg)) {
+		font-size: $font-size-title-6;
+	}
+}

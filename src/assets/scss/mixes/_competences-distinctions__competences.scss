@@ -1,0 +1,5 @@
+.competences-distinctions__competences {
+	@include at-most(bp(md)) {
+		margin-bottom: 40px;
+	}
+}

@@ -1,0 +1,13 @@
+.galerie-projets {
+	padding: 100px 0;
+}
+
+
+// Elems
+.galerie-projets__row {
+	margin-bottom: 50px;
+}
+
+.galerie-projets__title {
+	@extend %underlined-title;
+}

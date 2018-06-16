@@ -1,0 +1,14 @@
+@include at-least(bp($ficheProjet-mobileBP)) {
+	.fiche-projet__text-box {
+		bottom: -5px;
+		right: -35px;
+	}
+
+	// Mods
+	.fiche-projet--layout--inverted .fiche-projet__text-box {
+		bottom: auto;
+		right: auto;
+		top: -5px;
+		left: -35px;
+	}
+}

@@ -1,0 +1,73 @@
+.form {
+
+}
+
+// Elems
+.form__list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 40px 0;
+}
+
+.form__field {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 40px;
+
+	position: relative;
+}
+
+.form__label {
+	color: rgba($color-dark-primary, 0.7);
+
+	display: block;
+	position: absolute;
+	top: 5px;
+	left: 0;
+
+	transition: 0.2s all ease-out;
+
+	pointer-events: none;
+}
+
+.form__input {
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid $color-dark-primary;
+	padding: 5px 20px;
+
+	margin-bottom: 10px;
+
+	transition: 0.2s border-color ease-out;
+
+	&:focus{
+		outline: none;
+		border-color: $color-accent-primary;
+	}
+}
+
+.form__field-error-msg {
+	color: $formLabel-invalid-color;
+	font-size: $font-size-smaller;
+}
+
+.form__field-infos {
+	font-size: $font-size-smaller;
+	font-style: italic;
+	color: rgba($color-dark-primary, 0.7);
+}
+
+.form__buttons-wrapper {
+	display: flex;
+	justify-content: flex-end;
+}
+
+// Mods
+.form__input--state--invalid {
+	border-color: $formLabel-invalid-color;
+}
+
+.form__label--over-input {
+	top: -20px;
+	font-size: $font-size-smaller;
+}

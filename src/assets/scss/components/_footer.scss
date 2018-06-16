@@ -1,0 +1,16 @@
+.footer {
+	background-color: $color-dark-primary;
+	padding-bottom: 60px;
+}
+
+
+// Elems
+.footer__container {
+	margin-top: 30px;
+}
+
+.footer__copyright {
+	text-align: center;
+	font-size: $font-size-smallest;
+	color: $color-light-primary;
+}
