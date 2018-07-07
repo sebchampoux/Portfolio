@@ -2,6 +2,8 @@
 .icon-right-open-mini:before { content: '\e800'; } /* '' */
 .icon-mail:before { content: '\e801'; } /* '' */
 .icon-cancel:before { content: '\e802'; } /* '' */
+.icon-left-open-mini:before { content: '\e803'; } /* '' */
+.icon-home:before { content: '\e804'; } /* '' */
 .icon-linkedin:before { content: '\f0e1'; } /* '' */
 .icon-doc-text:before { content: '\f0f6'; } /* '' */
 .icon-youtube-play:before { content: '\f16a'; } /* '' */

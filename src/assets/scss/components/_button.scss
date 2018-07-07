@@ -64,6 +64,11 @@
 .button--size-small {
 	font-size: calculateRem(18px);
 	padding: 15px 30px;
+
+	&::after {
+		top: -3px;
+		left: -3px;
+	}
 }
 
 .button--link {
@@ -88,6 +93,7 @@
 	}
 }
 
+// Si l'icône est à droite du texte du bouton plutôt qu'à sa gauche
 .button__icon--after-text {
 	margin-right: 0;
 	margin-left: $button-iconMargin;

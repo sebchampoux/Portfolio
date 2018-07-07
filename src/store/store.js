@@ -7,11 +7,16 @@ import {ReseauSocial} from "../shared/classes/reseau-social";
  */
 export const store = new Vue({
 	data: {
+		// Variables pour le fonctionnement du site (ex. transition entre sections)
 		browserWindow: {
 			width: 0,
 			height: 0,
 			scroll: 0
 		},
+
+		showContactForm: false,
+
+		// Données partagées entre les pages
 		socialNetworks: [
 			new ReseauSocial({
 				slug: 'linked-in',
@@ -63,10 +68,17 @@ export const store = new Vue({
 
 		/**
 		 * Lors du scroll de l'écran
-		 * @param e
+		 * @param {event} e
 		 */
 		scrollWindow(e) {
 			this.browserWindow.scroll = e.currentTarget.scrollY;
+		},
+
+		/**
+		 * Smoothscroll jusqu'à une section X
+		 */
+		scrollWindowTo() {
+
 		}
 	},
 	created() {

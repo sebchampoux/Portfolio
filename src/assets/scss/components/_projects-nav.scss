@@ -1,0 +1,49 @@
+.projects-nav {
+	background-color: $color-neutral-primary;
+	border-top: 2px solid darken($color-light-primary, 5%);
+}
+
+// Elems
+.projects-nav__list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+
+	display: flex;
+	justify-content: space-between;
+	height: $projectsNav-height;
+}
+
+.projects-nav__item {
+	padding: 0;
+	margin: 0;
+	width: 33.333333333333%;
+}
+
+.projects-nav__link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+
+	text-align: center;
+	color: $color-dark-primary;
+	font-size: calculateRem(18px);
+
+	&:hover {
+		color: $color-dark-primary;
+		background-color: lighten($color-light-primary, 3%);
+		text-decoration: none;
+	}
+
+	&:active {
+		background-color: $color-light-primary;
+	}
+}
+
+.projects-nav__label {
+	@include at-most(bp(md)) {
+		display: none;
+	}
+}

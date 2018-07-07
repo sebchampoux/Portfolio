@@ -59,6 +59,18 @@
       "css": "cancel",
       "code": 59394,
       "src": "entypo"
+    },
+    {
+      "uid": "592717bd601645d61517d2a584d04127",
+      "css": "left-open-mini",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
+      "uid": "d7271d490b71df4311e32cdacae8b331",
+      "css": "home",
+      "code": 59396,
+      "src": "fontawesome"
     }
   ]
 }

@@ -5,8 +5,12 @@
 
 		<contact-form></contact-form>
 
-		<!-- Components de la page d'accueil, à déplacer éventuellement -->
-		<div class="page__content page__content--tossed-aside">
+		<div
+				class="page__content"
+				:class="{'page__content--tossed-aside': showContactForm}">
+
+
+			<!-- Components de la page d'accueil, à déplacer éventuellement -->
 			<hero-area></hero-area>
 			<a-propos></a-propos>
 			<galerie-projets></galerie-projets>
@@ -18,6 +22,7 @@
 </template>
 
 <script>
+	import {store} from "./store/store";
 	import MainNav from "./shared/components/main-nav";
 	import HeroArea from "./front-page/hero-area";
 	import APropos from "./front-page/a-propos";
@@ -27,13 +32,27 @@
 	import CvContact from "./front-page/cv-contact";
 	import PageFooter from "./front-page/page-footer";
 	import ContactForm from "./front-page/contact-form";
+	import Project from './project-page/project';
+	import ProjectsNav from "./project-page/projects-nav";
 
 	export default {
 		name: 'app',
 		components: {
 			ContactForm,
 			PageFooter,
-			CvContact, CompetencesDistinctions, GalerieProjets, BackToTop, APropos, HeroArea, MainNav}
+			CvContact,
+			CompetencesDistinctions,
+			GalerieProjets,
+			BackToTop,
+			APropos,
+			HeroArea,
+			MainNav
+		},
+		computed: {
+			showContactForm() {
+				return store.showContactForm;
+			}
+		}
 	}
 </script>
 
