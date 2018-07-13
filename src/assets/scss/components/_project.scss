@@ -1,9 +1,15 @@
 .project {
-	padding: 20px 0;
+	padding: 0;
+	margin: 0;
 }
 
-
 // Elems
+.project__container {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
 .project__row {
 	justify-content: space-around;
 }

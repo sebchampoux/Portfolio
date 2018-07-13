@@ -8,10 +8,10 @@
 				</a>
 			</li>
 			<li class="projects-nav__item">
-				<a href="javascript:;" class="projects-nav__link">
+				<router-link to="/" class="projects-nav__link">
 					<i class="projects-nav__icon icon-home"></i>
 					<span class="projects-nav__label">Accueil</span>
-				</a>
+				</router-link>
 			</li>
 			<li class="projects-nav__item">
 				<a href="javascript:;" class="projects-nav__link">

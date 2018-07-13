@@ -5,7 +5,7 @@ export const validationFunctions = {
 	 * @returns {boolean} Champ valide ou pas
 	 */
 	empty(value) {
-		return false;
+		return value !== undefined && value !== null && value !== '';
 	},
 
 	/**
@@ -14,11 +14,15 @@ export const validationFunctions = {
 	 * @returns {boolean} Champ valide ou pas
 	 */
 	email(value) {
-		return false;
+		const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return emailRegex.test(String(value).toLowerCase());
 	},
 
 	/**
 	 * Vérifie si une option est sélectionnée
+	 *
+	 * @todo à compléter
+	 *
 	 * @param {String} value - valeur à valider
 	 * @return {boolean} Champ valide ou pas
 	 */
@@ -34,5 +38,6 @@ export const validationFunctions = {
 export const textInputs = [
 	'text',
 	'password',
-	'email'
+	'email',
+	'number'
 ];

@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import {ReseauSocial} from "../shared/classes/reseau-social";
+import APIRequester from "../shared/classes/api-requester";
+import {config} from "../config/config";
 
 /**
  * Store pour les trucs communs (propriétés ou méthodes) à plusieurs components
@@ -15,6 +17,8 @@ export const store = new Vue({
 		},
 
 		showContactForm: false,
+
+		apiRequester: new APIRequester(config.ajax_url),
 
 		// Données partagées entre les pages
 		socialNetworks: [
@@ -46,16 +50,11 @@ export const store = new Vue({
 				iconClass: 'icon-pinterest',
 				itemClass: 'reseaux-sociaux__link--pinterest'
 			})
-		]
+		],
+
+		projects: []
 	},
 	methods: {
-		/**
-		 * Concatène les paramètres demandés à la fin du URL
-		 */
-		assembleParams() {
-
-		},
-
 		/**
 		 * Appelé lorsque la fenêtre est resizée
 		 * Entre les nouvelles dimensions de l'écran
@@ -79,6 +78,19 @@ export const store = new Vue({
 		 */
 		scrollWindowTo() {
 
+		},
+
+		/**
+		 * Charge les projets à partir de l'API et les enregistre dans projects
+		 */
+		loadProjects() {
+			this.apiRequester.getProjects({}).then(
+				response => {
+					this.projects = response.body;
+				},
+				errorResponse => {
+					console.log('Erreur lors du chargement des projets');
+				});
 		}
 	},
 	created() {

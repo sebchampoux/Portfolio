@@ -66,14 +66,13 @@
 					},
 					{
 						type: 'radio',
-						slug: 'test',
-						label: 'Test de bouton radio',
-						validation: validationFunctions.empty,
-						value: '',
+						slug: 'testRadio',
+						label: 'Test radio',
+						required: false,
+						validation: validationFunctions.empty(),
 						choices: {
 							item1: 'Item 1',
-							item2: 'Item 2',
-							item3: 'Item 3'
+							item2: 'Item 2'
 						}
 					}
 				]
@@ -82,7 +81,7 @@
 		components: {FormField},
 		methods: {
 			submitForm() {
-
+				console.log('Soumission du formulaire');
 			},
 			closeForm() {
 				store.showContactForm = false;

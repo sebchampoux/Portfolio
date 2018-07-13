@@ -1,5 +1,3 @@
-<!-- TODO à améliorer éventuellement (champs radio, select, checkbox...) -->
-
 <template>
 	<li class="form__field">
 		<!-- Input régulier (texte, password, email, etc.) -->
@@ -23,7 +21,7 @@
 			</div>
 		</template>
 
-		<!-- Input textarea -->
+		<!-- Textarea -->
 		<template v-if="fieldTemplate === 'textarea'">
 			<div class="form__input-wrapper form__input-wrapper--type--text">
 				<label
@@ -44,7 +42,6 @@
 		</template>
 
 		<!-- Bouton radio -->
-		<!-- TODO Problème d'utiliser value bindé à cause de v-model, trouver une solution -->
 		<template v-if="fieldTemplate === 'radio'">
 			<p class="form__text">{{ label }}</p>
 			<div
@@ -58,9 +55,13 @@
 						:name="slug"
 						:id="slug + '__' + key"
 						v-model="value">
-				<label :for="slug + '__' + key">{{ item }}</label>
+				<label :for="slug + '__' + key" class="form__text">{{ item }}</label>
 			</div>
 		</template>
+
+		<!-- TODO Checkboxes -->
+
+		<!-- TODO Select -->
 
 		<div class="form__field-infos" v-if="fieldInfos">{{ fieldInfos }}</div>
 		<div class="form__field-error-msg" v-if="!fieldValueIsValid">{{ errorMessage }}</div>
