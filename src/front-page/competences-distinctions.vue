@@ -12,7 +12,7 @@
 
 		<div class="container competences-distinctions__container">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6" id="competences">
 					<div class="competences-distinctions__title-wrapper">
 						<img src="../assets/svg/ordi.svg" alt="Ordi" class="competences-distinctions__title-icon">
 						<h2 class="competences-distinctions__title">Compétences</h2>
@@ -35,7 +35,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6" id="distinctions">
 					<div class="competences-distinctions__title-wrapper">
 						<img src="../assets/svg/medaille.svg" alt="Médaille"
 						     class="competences-distinctions__title-icon">

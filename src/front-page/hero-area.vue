@@ -1,6 +1,6 @@
 <template>
 	<header class="hero-area hero-area--top-nav-padding page__hero-area">
-		<img :src="featuredImg.src" :alt="featuredImg.alt" class="hero-area__feat-img">
+		<img src="../assets/imgs/hero-area__feat-img.jpg" alt="Leviathan @ Canada's Wonderland" class="hero-area__feat-img">
 
 		<div class="container hero-area__container">
 			<div class="row hero-area__row">
@@ -19,12 +19,13 @@
 
 
 <script>
+	import {store} from "../store/store";
+
 	export default {
 		name: "hero-area",
 		data() {
 			return {
 				featuredImg: {
-					src: './src/assets/imgs/hero-area__feat-img.jpg',
 					alt: 'Leviathan @ Canada\'s Wonderland'
 				}
 			};

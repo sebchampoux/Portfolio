@@ -1,5 +1,5 @@
 <template>
-	<section class="galerie-projets">
+	<section class="galerie-projets" id="galerie-projets">
 		<div class="container">
 			<div class="row galerie-projets__row">
 				<div class="col-12">
@@ -21,7 +21,7 @@
 							<h2 class="text-box__title text-box__title--boxed-top">{{ project.title.rendered }}</h2>
 							<div class="text-box__text" v-html="project.excerpt.rendered"></div>
 							<div class="text-box__text--align--rt">
-								<router-link to="/projet" class="button button--link">
+								<router-link :to="'/projet/' + project.slug" class="button button--link">
 									Plus d'infos<i class="icon-right-open-mini button__icon button__icon--after-text"></i>
 								</router-link>
 							</div>

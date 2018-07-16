@@ -14,7 +14,8 @@ export const store = new Vue({
 		browserWindow: {
 			width: 0,
 			height: 0,
-			scroll: 0
+			scroll: 0,
+			scrollSpeed: 200    // en ms
 		},
 
 		// API Rest
@@ -78,9 +79,8 @@ export const store = new Vue({
 
 		/**
 		 * Smoothscroll
-		 * @todo à compléter
 		 */
-		scrollWindowTo() {
+		scrollWindowTo(section) {
 
 		},
 

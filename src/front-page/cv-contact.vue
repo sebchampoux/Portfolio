@@ -1,5 +1,5 @@
 <template>
-	<section class="cv-contact">
+	<section class="cv-contact" id="cv-contact">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 offset-lg-1 col-md-6 cv-contact__button-wrapper">

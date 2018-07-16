@@ -2,24 +2,19 @@
 	<section class="project">
 		<div class="container-fluid project__container">
 			<div class="row project__row">
-				<div class="col-lg-5 col-md-6">
-					<img src="../assets/imgs/project__img.png" alt="" class="project__img">
+				<div class="col-xl-5 col-lg-6 project__image-wrapper">
+					<img :src="projectImage.src" :alt="projectImage.alt" class="project__img">
 				</div>
-				<div class="col-lg-5 col-md-6">
-					<h1 class="project__title">Nom du projet</h1>
+				<div class="col-xl-5 col-lg-6">
+					<h1 class="project__title">{{ project.title.rendered }}</h1>
 					<p class="project__contexte-realisation" v-html="contexteRealisation"></p>
-					<div class="project__description">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, accusantium ad aut consequatur cumque debitis delectus dolor enim, eos facere id iusto laborum molestiae molestias natus, odit quo unde voluptate!</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, accusantium ad aut consequatur cumque debitis delectus dolor enim, eos facere id iusto laborum molestiae molestias natus, odit quo unde voluptate!</p>
-					</div>
+					<div class="project__description" v-html="project.content.rendered"></div>
 					<h2 class="project__subtitle">Outils utilisés</h2>
 					<ul class="project__tools">
-						<li>HTML</li>
-						<li>CSS</li>
-						<li>JavaScript</li>
+						<li v-for="tool in tools">{{ tool.nom_logiciel }}</li>
 					</ul>
-					<div class="project__button-wrapper">
-						<a href="javascript:;" class="button">Voir le projet<i class="icon-right-open-mini"></i></a>
+					<div class="project__button-wrapper" v-if="project.acf.lien_vers_projet">
+						<a :href="project.acf.lien_vers_projet" target="_blank" class="button">Voir le projet<i class="icon-right-open-mini"></i></a>
 					</div>
 				</div>
 			</div>
@@ -28,6 +23,8 @@
 </template>
 
 <script>
+	import {stringUtils} from "../shared/classes/string-utils";
+
 	export default {
 		name: "project",
 		props: {
@@ -37,8 +34,47 @@
 			},
 		},
 		computed: {
+			/**
+			 * Prépare le contexte de réalisation et la liste des membres de l'équipe pour affichage dans le template
+			 * @return {string}
+			 */
 			contexteRealisation() {
-				return 'Projet de fin d\'études, réalisé avec une folle équipe';
+				let contexteString = '';
+
+				// Contexte de réalisation
+				contexteString += this.project.acf.contexte_realisation + ', ';
+
+				// Liste des coéquipiers si nécessaire
+				const coequipiers = this.project.acf.coequipiers;
+				if(coequipiers) {
+					contexteString += 'réalisé avec ';
+					for(let i = 0; i < coequipiers.length; i++) {
+						// Noms et portfolios
+						if(coequipiers[i].portfolio_coequipier) {
+							contexteString += `<a href="${ coequipiers[i].portfolio_coequipier }">${ coequipiers[i].nom_coequipier }</a>`;
+						} else {
+							contexteString += coequipiers[i].nom_coequipier;
+						}
+						// Ponctuation
+						if(i === coequipiers.length - 2) {
+							contexteString += ' et ';
+						} else if (i !== coequipiers.length - 1) {
+							contexteString += ', ';
+						}
+					}
+				} else {
+					contexteString += 'réalisé seul'
+				}
+				return contexteString;
+			},
+			tools() {
+				return this.project.acf.locigiels_utilises;
+			},
+			projectImage() {
+				return {
+					src: this.project.featuredMediaDetails.media_details.sizes['projet-single'].source_url,
+					alt: this.project.featuredMediaDetails.alt_text
+				};
 			}
 		},
 	}

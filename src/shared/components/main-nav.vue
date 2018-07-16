@@ -19,7 +19,9 @@
 								class="menu__item"
 								v-for="(item, index) in menuItems"
 								:key="item.slug">
-							<router-link :to="item.link" class="menu__link">{{ item.label }}</router-link>
+							<a v-if="item.type === 'anchor'" class="menu__link" @click.prevent="/* SmoothScroll */">{{ item.label }}</a>
+							<a v-if="item.type === 'method'" class="menu__link" @click.prevent="item.link">{{ item.label }}</a>
+							<router-link v-if="item.type === 'route'" :to="item.link" class="menu__link">{{ item.label }}</router-link>
 						</li>
 					</ul>
 					<ul class="reseaux-sociaux main-nav__reseaux-sociaux">
@@ -69,32 +71,38 @@
 					new MenuItem({
 						slug: 'a-propos',
 						label: 'À propos',
-						link: '/'
+						link: '#a-propos',
+						type: 'anchor'
 					}),
 					new MenuItem({
 						slug: 'projets',
 						label: 'Projets',
-						link: '/'
+						link: '#galerie-projets',
+						type: 'anchor'
 					}),
 					new MenuItem({
 						slug: 'competences',
 						label: 'Compétences',
-						link: '/'
+						link: '#competences',
+						type: 'anchor'
 					}),
 					new MenuItem({
 						slug: 'distinctions',
 						label: 'Distinctions',
-						link: '/'
+						link: '#distinctions',
+						type: 'anchor'
 					}),
 					new MenuItem({
 						slug: 'cv',
 						label: 'CV',
-						link: '/'
+						link: '#cv-contact',
+						type: 'anchor'
 					}),
 					new MenuItem({
 						slug: 'contact',
 						label: 'Contact',
-						link: '/'
+						link() { store.showContactForm = !store.showContactForm; },
+						type: 'method'
 					})
 				]
 			};
@@ -132,7 +140,7 @@
 			 */
 			socialNetworks() {
 				return store.socialNetworks;
-			}
+			},
 		}
 	}
 </script>

@@ -8,10 +8,19 @@
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
+
+	padding-bottom: calc(#{$projectsNav-height} + 30px);
+	padding-top: 20px;
 }
 
 .project__row {
 	justify-content: space-around;
+}
+
+.project__image-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .project__img {

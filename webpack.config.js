@@ -5,6 +5,7 @@ module.exports = {
 	entry: './src/main.js',
 	output: {
 		path: path.resolve(__dirname, './dist'),
+		// publicPath: '/portfolio/wp-content/themes/portfolio-vue/dist/',
 		publicPath: '/dist/',
 		filename: 'build.js'
 	},
@@ -103,7 +104,7 @@ if (process.env.NODE_ENV === 'production') {
 			}
 		}),
 		new webpack.optimize.UglifyJsPlugin({
-			sourceMap: true,
+			sourceMap: false,
 			compress: {
 				warnings: false
 			}

@@ -11,7 +11,7 @@ export const routes = [
 		component: FrontPage
 	},
 	{
-		path: '/projet',
+		path: '/projet/:slug',
 		component: ProjectPage
 	}
 ];

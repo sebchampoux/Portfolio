@@ -25,5 +25,11 @@ export class MenuItem {
 		 * @type {string}
 		 */
 		this.link = itemConfig.link;
+
+		/**
+		 * Quel type de lien c'est : un anchor ou une route
+		 * @type {string}
+		 */
+		this.type = itemConfig.type;
 	}
 }
