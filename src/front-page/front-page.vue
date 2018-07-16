@@ -1,5 +1,6 @@
 <template>
 	<div class="page">
+
 		<main-nav></main-nav>
 		<back-to-top></back-to-top>
 
@@ -30,7 +31,6 @@
 	import PageFooter from "./page-footer";
 	import ContactForm from "./contact-form";
 
-
 	export default {
 		name: "front-page",
 		components: {
@@ -47,6 +47,12 @@
 		computed: {
 			showContactForm() {
 				return store.showContactForm;
+			},
+			/**
+			 * @todo temporaire!
+			 */
+			homePage() {
+				return store.homePage;
 			}
 		}
 	}

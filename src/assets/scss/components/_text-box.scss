@@ -82,12 +82,14 @@
 	background-color: $color-light-primary;
 }
 
-.text-box--padd-sm {
+.text-box--padd--sm {
 	padding: 20px;
 }
 
 .text-box__title--boxed-top {
 	font-size: $font-size-title-4;
+	font-weight: $font-weight-normal;
+	letter-spacing: normal;
 	color: $color-light-primary;
 	background-color: $color-accent-secondary;
 

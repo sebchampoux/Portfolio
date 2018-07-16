@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import {stringUtils} from "./string-utils";
 
 Vue.use(VueResource);
 
 /**
  * Fait les requêtes à l'API de WordPress
+ * @todo à refactor en crissant direct les paramètres dans Vue (pas besoin de concaténer en chaîne)
  */
 export default class APIRequester {
 
@@ -26,7 +28,7 @@ export default class APIRequester {
 	 * @return {PromiseLike<HttpResponse>}
 	 */
 	getProjects(params) {
-		const requestUrl = this.apiUrl + '/projets' + APIRequester.stringifyParams(params);
+		const requestUrl = this.apiUrl + '/projets' + stringUtils.stringifyParams(params);
 		return Vue.http.get(requestUrl);
 	}
 
@@ -36,7 +38,17 @@ export default class APIRequester {
 	 * @return {PromiseLike<HttpResponse>}
 	 */
 	getPages(params) {
-		const requestUrl = this.apiUrl + '/pages' + APIRequester.stringifyParams(params);
+		const requestUrl = this.apiUrl + '/pages' + stringUtils.stringifyParams(params);
+		return Vue.http.get(requestUrl);
+	}
+
+	/**
+	 * Récupère une page selon son ID
+	 * @param {number} pageId - ID de la page
+	 * @return {PromiseLike<HttpResponse>}
+	 */
+	getPageById(pageId) {
+		const requestUrl = this.apiUrl + '/pages/' + pageId;
 		return Vue.http.get(requestUrl);
 	}
 
@@ -45,50 +57,26 @@ export default class APIRequester {
 	 * @param {Object} params - Paramètres de la requête (voir https://developer.wordpress.org/rest-api/reference/media/#arguments pour les arguments possibles)
 	 * @return {PromiseLike<HttpResponse>}
 	 */
-	getMedia(params) {
-		const requestUrl = this.apiUrl + '/pages' + APIRequester.stringifyParams(params);
+	getMedias(params) {
+		const requestUrl = this.apiUrl + '/media' + stringUtils.stringifyParams(params);
 		return Vue.http.get(requestUrl);
 	}
 
 	/**
-	 * Concatène les paramètres en une chaîne de caractères
-	 *
-	 * @todo à déplacer ?
-	 *
-	 * @param {Object} params - Paramètres à concaténer
-	 * @return {String} paramètres concaténés en une chaîne (incluant le '?' initial)
+	 * Charge les informations sur un ou des médias
+	 * @param {number} id - ID du média à charger
+	 * @return {PromiseLike<HttpResponse>|boolean}
 	 */
-	static stringifyParams(params) {
-		let urlString = '?';
-		let isFirstLoopIteration = true;
-
-		for (let key in params) {
-			if(!params.hasOwnProperty(key)) continue;
-
-			// Si pas le premier paramètre, on ajoute un '&'
-			if(!isFirstLoopIteration) {
-				urlString += '&';
-			} else {
-				isFirstLoopIteration = false;
-			}
-
-			urlString += key + '=' + params[key];
-		}
-
-		return urlString;
+	getMediaById(id) {
+		const requestUrl = this.apiUrl + '/media/' + id;
+		return Vue.http.get(requestUrl);
 	}
 
 	/**
-	 * Décode une chaîne contenant des caractères spéciaux encodés
-	 *
-	 * @todo à déplacer ?
-	 *
-	 * @param stringToDecode - chaîne à décoder
-	 * @return {String} chaîne décodée
+	 * Récupère les paramètres globaux du site
 	 */
-	static decodeSpecialChars(stringToDecode) {
-		const tempInput = document.createElement('textarea');
-		tempInput.innerHTML = stringToDecode;
-		return tempInput.value;
+	getSiteSettings() {
+		const requestUrl = this.apiUrl + '/settings';
+		return Vue.http.get(requestUrl);
 	}
 }

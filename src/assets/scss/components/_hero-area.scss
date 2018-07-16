@@ -11,7 +11,7 @@
 
 // Elems
 .hero-area__feat-img {
-	@extend %responsive-image;
+	@extend %responsive-image-cover;
 
 	position: absolute;
 	top: 0;

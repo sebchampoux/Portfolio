@@ -41,9 +41,9 @@
 
 	export default {
 		name: "page-footer",
-		data() {
-			return {
-				socialNetworks: store.socialNetworks
+		computed: {
+			socialNetworks() {
+				return store.socialNetworks;
 			}
 		},
 	}

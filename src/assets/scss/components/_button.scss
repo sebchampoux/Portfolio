@@ -76,7 +76,8 @@
 	padding: 10px 0;
 
 	color: $color-accent-primary;
-	font-weight: $font-weight-bold;
+	font-weight: $font-weight-normal;
+	font-family: $font-family-title-primary;
 	letter-spacing: normal;
 
 	&:hover {

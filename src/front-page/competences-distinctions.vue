@@ -1,6 +1,7 @@
 <template>
 	<section class="competences-distinctions">
-		<img src="../assets/svg/background_montagneRusse2.svg" alt="" class="bg-coaster competences-distinctions__bg-coaster">
+		<img src="../assets/svg/background_montagneRusse2.svg" alt=""
+		     class="bg-coaster competences-distinctions__bg-coaster">
 
 		<svg version="1.1"
 		     xmlns="http://www.w3.org/2000/svg"
@@ -17,24 +18,36 @@
 						<h2 class="competences-distinctions__title">Compétences</h2>
 					</div>
 					<ul class="competences competences-distinctions__competences">
-						<li class="competences__item">
-							<img src="../assets/imgs/competences__icon.svg" alt="HTML5" title="HTML5" class="competences__icon">
+						<li
+								v-for="competence in competences"
+								class="competences__item">
+							<img
+									:src="competence.icone_competence"
+									:alt="competence.nom_competence"
+									:title="competence.nom_competence"
+									class="competences__icon">
 							<div class="competences__bande">
-								<div class="competences__bande-fill" style="width: 80%"></div>
+								<div
+										class="competences__bande-fill"
+										:style="{'width': competence.pourcentage_maitrise + '%'}">
+								</div>
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div class="col-md-6">
 					<div class="competences-distinctions__title-wrapper">
-						<img src="../assets/svg/medaille.svg" alt="Médaille" class="competences-distinctions__title-icon">
+						<img src="../assets/svg/medaille.svg" alt="Médaille"
+						     class="competences-distinctions__title-icon">
 						<h2 class="competences-distinctions__title">Distinctions</h2>
 					</div>
 					<ul class="distinctions">
-						<li class="distinctions__item">
-							<p class="distinctions__item-titre">Prix des profs Chaos Médias</p>
-							<p class="distinctions__item-description">Mention décernée pour l'excellence de mon parcours en TIM</p>
-							<p class="distinctions__item-annee">2015</p>
+						<li
+								v-for="distinction in distinctions"
+								class="distinctions__item">
+							<p class="distinctions__item-titre">{{ distinction.nom_prix }}</p>
+							<p class="distinctions__item-description">{{ distinction.description_prix }}</p>
+							<p class="distinctions__item-annee">{{ distinction.annee }}</p>
 						</li>
 					</ul>
 				</div>
@@ -51,8 +64,18 @@
 </template>
 
 <script>
+	import {store} from "../store/store";
+
 	export default {
-		name: "competences-distinctions"
+		name: "competences-distinctions",
+		computed: {
+			distinctions() {
+				return store.homePage.acf.liste_distinctions;
+			},
+			competences() {
+				return store.homePage.acf.liste_competences;
+			}
+		},
 	}
 </script>
 

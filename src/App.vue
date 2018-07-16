@@ -1,10 +1,31 @@
 <template>
-	<router-view></router-view>
+	<div class="root">
+		<transition
+				enter-active-class="animated fadeIn"
+				leave-active-class="animated fadeOut"
+				mode="out-in">
+			<template v-if="isLoading">
+				<loading></loading>
+			</template>
+			<template v-else>
+				<router-view></router-view>
+			</template>
+		</transition>
+	</div>
 </template>
 
 <script>
+	import {store} from "./store/store";
+	import Loading from "./shared/components/loading";
+
 	export default {
-		name: 'app'
+		name: 'app',
+		components: {Loading},
+		computed: {
+			isLoading() {
+				return store.isLoading;
+			}
+		}
 	}
 </script>
 

@@ -7,7 +7,7 @@
 				</div>
 				<div class="col-lg-5 col-md-6">
 					<h1 class="project__title">Nom du projet</h1>
-					<p class="project__contexte-realisation">Projet de fin d'études, réalisé avec une folle équipe</p>
+					<p class="project__contexte-realisation" v-html="contexteRealisation"></p>
 					<div class="project__description">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, accusantium ad aut consequatur cumque debitis delectus dolor enim, eos facere id iusto laborum molestiae molestias natus, odit quo unde voluptate!</p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, accusantium ad aut consequatur cumque debitis delectus dolor enim, eos facere id iusto laborum molestiae molestias natus, odit quo unde voluptate!</p>
@@ -29,6 +29,17 @@
 
 <script>
 	export default {
-		name: "project"
+		name: "project",
+		props: {
+			project: {
+				type: Object,
+				required: true
+			},
+		},
+		computed: {
+			contexteRealisation() {
+				return 'Projet de fin d\'études, réalisé avec une folle équipe';
+			}
+		},
 	}
 </script>

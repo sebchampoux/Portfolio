@@ -64,17 +64,17 @@
 						validation: validationFunctions.empty,
 						value: ''
 					},
-					{
-						type: 'radio',
-						slug: 'testRadio',
-						label: 'Test radio',
-						required: false,
-						validation: validationFunctions.empty(),
-						choices: {
-							item1: 'Item 1',
-							item2: 'Item 2'
-						}
-					}
+					// {
+					// 	type: 'radio',
+					// 	slug: 'testRadio',
+					// 	label: 'Test radio',
+					// 	required: false,
+					// 	validation: validationFunctions.empty(),
+					// 	choices: {
+					// 		item1: 'Item 1',
+					// 		item2: 'Item 2'
+					// 	}
+					// }
 				]
 			}
 		},

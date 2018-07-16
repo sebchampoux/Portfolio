@@ -34,6 +34,7 @@
 	position: absolute;
 	right: 0;
 	top: 0;
+	text-transform: none;
 
 	@include at-most(bp(lg)) {
 		font-size: $font-size-title-6;

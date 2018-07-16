@@ -1,5 +1,11 @@
-%responsive-image {
+%responsive-image-cover {
 	object-fit: cover;
 	object-position: center;
-	font-family: 'object-fit: cover; object-position: bottom;';
+	font-family: 'object-fit: cover; object-position: center;';
+}
+
+%responsive-image-contain {
+	object-fit: contain;
+	object-position: center;
+	font-family: 'object-fit: contain; object-position: center;';
 }

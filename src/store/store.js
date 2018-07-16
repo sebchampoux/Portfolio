@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import {ReseauSocial} from "../shared/classes/reseau-social";
 import APIRequester from "../shared/classes/api-requester";
+
 import {config} from "../config/config";
 
 /**
@@ -16,11 +17,14 @@ export const store = new Vue({
 			scroll: 0
 		},
 
-		showContactForm: false,
-
+		// API Rest
 		apiRequester: new APIRequester(config.ajax_url),
+		projects: [],
+		homePage: {},
 
-		// Données partagées entre les pages
+		// Données et état partagés entre les pages
+		showContactForm: false,
+		isLoading: false,
 		socialNetworks: [
 			new ReseauSocial({
 				slug: 'linked-in',
@@ -50,14 +54,12 @@ export const store = new Vue({
 				iconClass: 'icon-pinterest',
 				itemClass: 'reseaux-sociaux__link--pinterest'
 			})
-		],
-
-		projects: []
+		]
 	},
 	methods: {
 		/**
 		 * Appelé lorsque la fenêtre est resizée
-		 * Entre les nouvelles dimensions de l'écran
+		 * Enregistre les nouvelles dimensions de l'écran
 		 * @param {event} e
 		 */
 		resizeWindow(e) {
@@ -67,6 +69,7 @@ export const store = new Vue({
 
 		/**
 		 * Lors du scroll de l'écran
+		 * Enregistre la position du scroll
 		 * @param {event} e
 		 */
 		scrollWindow(e) {
@@ -74,7 +77,8 @@ export const store = new Vue({
 		},
 
 		/**
-		 * Smoothscroll jusqu'à une section X
+		 * Smoothscroll
+		 * @todo à compléter
 		 */
 		scrollWindowTo() {
 
@@ -82,15 +86,59 @@ export const store = new Vue({
 
 		/**
 		 * Charge les projets à partir de l'API et les enregistre dans projects
+		 * @param {function} successCallback
 		 */
-		loadProjects() {
+		loadProjects(successCallback) {
+			// Chargement des projets
 			this.apiRequester.getProjects({}).then(
 				response => {
 					this.projects = response.body;
+					this.loadProjectMedias();
+					if(successCallback) {
+						successCallback();
+					}
 				},
 				errorResponse => {
 					console.log('Erreur lors du chargement des projets');
 				});
+		},
+
+		/**
+		 * Charge les informations des médias de tous les projets
+		 * @param {function} successCallback
+		 */
+		loadProjectMedias(successCallback) {
+			this.projects.forEach(project => {
+				this.apiRequester.getMediaById(project.featured_media).then(
+					response => {
+						project.featuredMediaDetails = response.body;
+						if(successCallback) {
+							successCallback();
+						}
+					},
+					errorResponse => {
+						console.log('Erreur lors du chargement du media ayant comme ID : ' + mediaId);
+					}
+				);
+			});
+		},
+
+		/**
+		 * Charge la page d'accueil
+		 * @param {function} successCallback
+		 */
+		loadHomePage(successCallback) {
+			this.apiRequester.getPageById(30).then(
+				response => {
+					this.homePage = response.body;
+					if(successCallback) {
+						successCallback();
+					}
+				},
+				errorResponse => {
+					console.log('Erreur lors du chargement de la page d\'accueil');
+				}
+			);
 		}
 	},
 	created() {
@@ -102,6 +150,15 @@ export const store = new Vue({
 		this.browserWindow.width = window.innerWidth;
 		this.browserWindow.height = window.innerHeight;
 		this.browserWindow.scroll = window.scrollY;
+
+		// Exécute toutes les requêtes à l'API pour charger le contenu de la page d'accueil
+		// @TODO à améliorer pour que les requêtes se fassent en même temps !
+		this.isLoading = true;
+		this.loadProjects(() => {
+			this.loadHomePage(() => {
+				this.isLoading = false;
+			});
+		});
 	},
 	beforeDestroy() {
 		// Écouteurs d'évènement

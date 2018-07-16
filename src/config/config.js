@@ -1,5 +1,5 @@
 /**
- * Paramètres globaux au site (ex. URL de l'API Rest)
+ * Paramètres globaux au site
  */
 export const config = {
 	/**
@@ -7,4 +7,5 @@ export const config = {
 	 * @type {string}
 	 */
 	ajax_url: 'http://sebastienchampoux.com/wp-json/wp/v2',
+	// ajax_url: portfolio_localiz.rest_url,
 };

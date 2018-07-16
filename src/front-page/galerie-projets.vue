@@ -13,8 +13,11 @@
 					<article
 							class="fiche-projet"
 							:class="{'fiche-projet--layout--inverted': !indexIsEven(index)}">
-						<img src="../assets/imgs/fiche-projet__img.jpg" alt="" class="fiche-projet__img">
-						<div class="text-box text-box--padd-sm text-box--bg--darker fiche-projet__text-box">
+						<img
+								:src="project.featuredMediaDetails.media_details.sizes['projet-galerie'].source_url"
+								:alt="project.featuredMediaDetails.alt_text"
+								class="fiche-projet__img">
+						<div class="text-box text-box--padd--sm text-box--bg--darker fiche-projet__text-box">
 							<h2 class="text-box__title text-box__title--boxed-top">{{ project.title.rendered }}</h2>
 							<div class="text-box__text" v-html="project.excerpt.rendered"></div>
 							<div class="text-box__text--align--rt">
@@ -49,12 +52,6 @@
 			indexIsEven(index) {
 				return index % 2 === 0;
 			}
-		},
-		/**
-		 * @todo temporaire!!!
-		 */
-		mounted() {
-			store.loadProjects();
 		}
 	}
 </script>

@@ -12,3 +12,14 @@
 		left: -35px;
 	}
 }
+
+@include at-most(bp($ficheProjet-mobileBP)) {
+	.fiche-projet__text-box {
+		width: 100%;
+
+		&::after {
+			content: none;
+		}
+	}
+}
+

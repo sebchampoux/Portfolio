@@ -6,6 +6,10 @@
 // Elems
 .galerie-projets__row {
 	margin-bottom: 50px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .galerie-projets__title {

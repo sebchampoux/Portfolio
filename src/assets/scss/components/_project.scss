@@ -17,7 +17,7 @@
 .project__img {
 	width: 100%;
 	height: 500px;
-	@extend %responsive-image;
+	@extend %responsive-image-cover;
 }
 
 .project__title {
