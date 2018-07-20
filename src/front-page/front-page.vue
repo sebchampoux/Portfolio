@@ -20,7 +20,11 @@
 </template>
 
 <script>
+	import {miscUtils} from "../shared/classes/misc-utils";
+	import {config} from "../config/config";
+	import APIRequester from '../shared/classes/api-requester';
 	import {store} from "../store/store";
+
 	import MainNav from "../shared/components/main-nav";
 	import BackToTop from "../shared/components/back-to-top";
 	import HeroArea from "./hero-area";
@@ -44,6 +48,61 @@
 			BackToTop,
 			MainNav
 		},
+		data() {
+			return {
+				apiRequester: new APIRequester(config.ajax_url)
+			}
+		},
+		methods: {
+			/**
+			 * @todo à refactor pour utiliser ID de la page d'accueil renvoyé par WordPress
+			 */
+			loadPageContents() {
+				// Vérifier si le contenu a déjà été chargé, pour s'éviter de le recharger inutilement
+				if (miscUtils.isObjectEmpty(store.homePage)) {
+					// Load la page d'accueil
+					this.apiRequester.getPageById(30).then(
+						successData => {
+							store.homePage = successData.body;
+						},
+						errorData => console.log(errorData)
+					);
+				}
+			},
+
+			/**
+			 * Charge les informations de tous les projets
+			 */
+			loadProjects() {
+				// Temporaire
+				if(store.projects.length !== 0) return;
+
+				this.apiRequester.getProjects({}).then(
+					successData => {
+						// Enregistrer les projets dans le store
+						store.projects = successData.body;
+
+						// Liste des medias qu'on va devoir récupérer
+						const projectMediasIds = [];
+						store.projects.forEach(project => projectMediasIds.push(project.featured_media));
+
+						// Requête des medias et enregistrement des infos dans les projets
+						this.apiRequester.getMedias({
+							include: projectMediasIds
+						}).then(
+							successData => {
+								// On passe les projets un par un, on trouve le media correspondant et on sauvegarde les infos dans le projet
+								store.projects.forEach(project => {
+									project.featuredMediaDetails = successData.body.find(media => media.id === project.featured_media);
+								});
+							},
+							errorData => console.log(errorData)
+						);
+					},
+					errorData => console.log(errorData)
+				);
+			}
+		},
 		computed: {
 			showContactForm() {
 				return store.showContactForm;
@@ -54,10 +113,10 @@
 			homePage() {
 				return store.homePage;
 			}
+		},
+		created() {
+			this.loadPageContents();
+			this.loadProjects();
 		}
 	}
 </script>
-
-<style scoped>
-
-</style>

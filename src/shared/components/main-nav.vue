@@ -101,7 +101,7 @@
 					new MenuItem({
 						slug: 'contact',
 						label: 'Contact',
-						link() { store.showContactForm = !store.showContactForm; },
+						link: () => { store.showContactForm = !store.showContactForm; },
 						type: 'method'
 					})
 				]

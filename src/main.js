@@ -5,7 +5,7 @@ import App from './App.vue';
 import {routes} from "./routes/routes";
 
 // Pour les images
-document.addEventListener('DOMContentLoaded', e => objectFitImages());
+document.addEventListener('DOMContentLoaded', objectFitImages);
 
 // Routes
 Vue.use(VueRouter);

@@ -1,12 +1,9 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import {stringUtils} from "./string-utils";
-
 Vue.use(VueResource);
 
 /**
  * Fait les requêtes à l'API de WordPress
- * @todo à refactor en crissant direct les paramètres dans Vue (pas besoin de concaténer en chaîne)
  */
 export default class APIRequester {
 
@@ -28,8 +25,8 @@ export default class APIRequester {
 	 * @return {PromiseLike<HttpResponse>}
 	 */
 	getProjects(params) {
-		const requestUrl = this.apiUrl + '/projets' + stringUtils.stringifyParams(params);
-		return Vue.http.get(requestUrl);
+		const requestUrl = this.apiUrl + '/projets';
+		return Vue.http.get(requestUrl, {params});
 	}
 
 	/**
@@ -38,8 +35,8 @@ export default class APIRequester {
 	 * @return {PromiseLike<HttpResponse>}
 	 */
 	getPages(params) {
-		const requestUrl = this.apiUrl + '/pages' + stringUtils.stringifyParams(params);
-		return Vue.http.get(requestUrl);
+		const requestUrl = this.apiUrl + '/pages';
+		return Vue.http.get(requestUrl, {params});
 	}
 
 	/**
@@ -58,8 +55,8 @@ export default class APIRequester {
 	 * @return {PromiseLike<HttpResponse>}
 	 */
 	getMedias(params) {
-		const requestUrl = this.apiUrl + '/media' + stringUtils.stringifyParams(params);
-		return Vue.http.get(requestUrl);
+		const requestUrl = this.apiUrl + '/media';
+		return Vue.http.get(requestUrl, {params});
 	}
 
 	/**

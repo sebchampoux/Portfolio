@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import {ReseauSocial} from "../shared/classes/reseau-social";
-import APIRequester from "../shared/classes/api-requester";
-
-import {config} from "../config/config";
 
 /**
  * Store pour les trucs communs (propriétés ou méthodes) à plusieurs components
@@ -18,10 +15,11 @@ export const store = new Vue({
 			scrollSpeed: 200    // en ms
 		},
 
-		// API Rest
-		apiRequester: new APIRequester(config.ajax_url),
+		// Données des pages et du site en général (partagé entre les pages)
 		projects: [],
+		medias: [],
 		homePage: {},
+		siteSettings: {},
 
 		// Données et état partagés entre les pages
 		showContactForm: false,
@@ -61,20 +59,18 @@ export const store = new Vue({
 		/**
 		 * Appelé lorsque la fenêtre est resizée
 		 * Enregistre les nouvelles dimensions de l'écran
-		 * @param {event} e
 		 */
-		resizeWindow(e) {
-			this.browserWindow.width = e.currentTarget.innerWidth;
-			this.browserWindow.height = e.currentTarget.innerHeight;
+		resizeWindow() {
+			this.browserWindow.width = window.innerWidth;
+			this.browserWindow.height = window.innerHeight;
 		},
 
 		/**
 		 * Lors du scroll de l'écran
 		 * Enregistre la position du scroll
-		 * @param {event} e
 		 */
-		scrollWindow(e) {
-			this.browserWindow.scroll = e.currentTarget.scrollY;
+		scrollWindow() {
+			this.browserWindow.scroll = window.scrollY;
 		},
 
 		/**
@@ -82,63 +78,6 @@ export const store = new Vue({
 		 */
 		scrollWindowTo(section) {
 
-		},
-
-		/**
-		 * Charge les projets à partir de l'API et les enregistre dans projects
-		 * @param {function} successCallback
-		 */
-		loadProjects(successCallback) {
-			// Chargement des projets
-			this.apiRequester.getProjects({}).then(
-				response => {
-					this.projects = response.body;
-					this.loadProjectMedias();
-					if(successCallback) {
-						successCallback();
-					}
-				},
-				errorResponse => {
-					console.log('Erreur lors du chargement des projets');
-				});
-		},
-
-		/**
-		 * Charge les informations des médias de tous les projets
-		 * @param {function} successCallback
-		 */
-		loadProjectMedias(successCallback) {
-			this.projects.forEach(project => {
-				this.apiRequester.getMediaById(project.featured_media).then(
-					response => {
-						project.featuredMediaDetails = response.body;
-						if(successCallback) {
-							successCallback();
-						}
-					},
-					errorResponse => {
-						console.log('Erreur lors du chargement du media ayant comme ID : ' + mediaId);
-					}
-				);
-			});
-		},
-
-		/**
-		 * Charge la page d'accueil
-		 * @param {function} successCallback
-		 */
-		loadHomePage(successCallback) {
-			this.apiRequester.getPageById(30).then(
-				response => {
-					this.homePage = response.body;
-					if(successCallback) {
-						successCallback();
-					}
-				},
-				errorResponse => {
-					console.log('Erreur lors du chargement de la page d\'accueil');
-				}
-			);
 		}
 	},
 	created() {
@@ -147,18 +86,8 @@ export const store = new Vue({
 		window.addEventListener('scroll', this.scrollWindow);
 
 		// Dimensions de base de l'écran
-		this.browserWindow.width = window.innerWidth;
-		this.browserWindow.height = window.innerHeight;
-		this.browserWindow.scroll = window.scrollY;
-
-		// Exécute toutes les requêtes à l'API pour charger le contenu de la page d'accueil
-		// @TODO à améliorer pour que les requêtes se fassent en même temps !
-		this.isLoading = true;
-		this.loadProjects(() => {
-			this.loadHomePage(() => {
-				this.isLoading = false;
-			});
-		});
+		this.resizeWindow();
+		this.scrollWindow();
 	},
 	beforeDestroy() {
 		// Écouteurs d'évènement
