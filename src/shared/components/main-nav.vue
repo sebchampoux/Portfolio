@@ -5,7 +5,7 @@
 		<div class="container-fluid main-nav__container">
 			<!-- Mon nom -->
 			<h1 class="site-name main-nav__site-name">
-				<router-link to="/" class="site-name__link">Sébastien Champoux</router-link>
+				<a href="#" class="site-name__link" @click.prevent="scrollToSection('#top-anchor')">Sébastien Champoux</a>
 			</h1>
 
 			<!-- Menu principal -->
@@ -19,7 +19,8 @@
 								class="menu__item"
 								v-for="(item, index) in menuItems"
 								:key="item.slug">
-							<a v-if="item.type === 'anchor'" class="menu__link" @click.prevent="/* SmoothScroll */">{{ item.label }}</a>
+							<a v-if="item.type === 'anchor'" class="menu__link"
+							   @click.prevent="scrollToSection(item.link)">{{ item.label }}</a>
 							<a v-if="item.type === 'method'" class="menu__link" @click.prevent="item.link">{{ item.label }}</a>
 							<router-link v-if="item.type === 'route'" :to="item.link" class="menu__link">{{ item.label }}</router-link>
 						</li>
@@ -101,7 +102,10 @@
 					new MenuItem({
 						slug: 'contact',
 						label: 'Contact',
-						link() { store.showContactForm = !store.showContactForm; },
+						link: () => {
+							store.showContactForm = !store.showContactForm;
+							this.hamburgerIsOpen = false;
+						},
 						type: 'method'
 					})
 				]
@@ -113,6 +117,14 @@
 			 */
 			toggleHamburger() {
 				this.hamburgerIsOpen = !this.hamburgerIsOpen;
+			},
+
+			/**
+			 * Smoothscroll jusqu'à la section demandée
+			 * @param {string} anchor - ID de la section
+			 */
+			scrollToSection(anchor) {
+				store.smoothScrollTo(anchor);
 			}
 		},
 		computed: {

@@ -4,8 +4,9 @@
 			enter-active-class="animated fadeIn"
 			leave-active-class="animated fadeOut">
 		<a
-				href="javascript:;"
+				href="#"
 				class="back-to-top page__back-to-top"
+				@click.prevent="scrollToTop"
 				v-show="isVisible">
 			<i class="back-to-top__icon icon-up"></i>
 		</a>
@@ -20,6 +21,11 @@
 		data() {
 			return {
 				apparitionPoint: 200
+			}
+		},
+		methods: {
+			scrollToTop() {
+				store.smoothScrollTo('#top-anchor');
 			}
 		},
 		computed: {

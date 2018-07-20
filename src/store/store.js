@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import {TweenLite, ScrollToPlugin} from 'gsap/all';
 import {ReseauSocial} from "../shared/classes/reseau-social";
 import APIRequester from "../shared/classes/api-requester";
 
@@ -15,7 +16,7 @@ export const store = new Vue({
 			width: 0,
 			height: 0,
 			scroll: 0,
-			scrollSpeed: 200    // en ms
+			scrollSpeed: 1.25  // en secs
 		},
 
 		// API Rest
@@ -71,17 +72,24 @@ export const store = new Vue({
 		/**
 		 * Lors du scroll de l'écran
 		 * Enregistre la position du scroll
-		 * @param {event} e
 		 */
-		scrollWindow(e) {
-			this.browserWindow.scroll = e.currentTarget.scrollY;
+		scrollWindow() {
+			this.browserWindow.scroll = window.scrollY;
 		},
 
 		/**
 		 * Smoothscroll
+		 * @param {string|number} section - ID de la section à laquelle on veut smoothscroller OU position Y dans la page
 		 */
-		scrollWindowTo(section) {
-
+		smoothScrollTo(section) {
+			TweenLite.to(
+				window,
+				this.browserWindow.scrollSpeed,
+				{
+					scrollTo: section,
+					onComplete: () => this.scrollWindow() // Pour updater la position dans la page enregistrée dans l'instance Vue
+				}
+			);
 		},
 
 		/**
@@ -94,7 +102,7 @@ export const store = new Vue({
 				response => {
 					this.projects = response.body;
 					this.loadProjectMedias();
-					if(successCallback) {
+					if (successCallback) {
 						successCallback();
 					}
 				},
@@ -112,7 +120,7 @@ export const store = new Vue({
 				this.apiRequester.getMediaById(project.featured_media).then(
 					response => {
 						project.featuredMediaDetails = response.body;
-						if(successCallback) {
+						if (successCallback) {
 							successCallback();
 						}
 					},
@@ -131,7 +139,7 @@ export const store = new Vue({
 			this.apiRequester.getPageById(30).then(
 				response => {
 					this.homePage = response.body;
-					if(successCallback) {
+					if (successCallback) {
 						successCallback();
 					}
 				},
@@ -152,7 +160,7 @@ export const store = new Vue({
 		this.browserWindow.scroll = window.scrollY;
 
 		// Exécute toutes les requêtes à l'API pour charger le contenu de la page d'accueil
-		// @TODO à améliorer pour que les requêtes se fassent en même temps !
+		// @TODO à retirer d'ici, temporaire
 		this.isLoading = true;
 		this.loadProjects(() => {
 			this.loadHomePage(() => {

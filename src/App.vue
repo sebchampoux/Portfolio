@@ -1,5 +1,6 @@
 <template>
 	<div class="root">
+		<div id="top-anchor"></div>
 		<transition
 				enter-active-class="animated fadeIn"
 				leave-active-class="animated fadeOut"

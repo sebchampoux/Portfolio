@@ -9,7 +9,7 @@
 						<h1 class="text-box__title">Sébastien Champoux</h1>
 						<div class="text-box__separation"></div>
 						<h2 class="text-box__subtitle">Intégrateur et développeur web</h2>
-						<a href="javascript:;" class="button">Mes projets</a>
+						<a href="#" class="button" @click.prevent="scrollToProjects">Mes projets</a>
 					</div>
 				</div>
 			</div>
@@ -29,6 +29,11 @@
 					alt: 'Leviathan @ Canada\'s Wonderland'
 				}
 			};
-		}
+		},
+		methods: {
+			scrollToProjects() {
+				store.smoothScrollTo('#galerie-projets');
+			},
+		},
 	}
 </script>

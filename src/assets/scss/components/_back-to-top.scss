@@ -30,6 +30,8 @@
 	}
 
 	&:hover {
+		cursor: pointer;
+		
 		&::after {
 			left: 0;
 			top: 0;
