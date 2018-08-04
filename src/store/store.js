@@ -59,7 +59,7 @@ export const store = new Vue({
 				iconClass: 'icon-pinterest',
 				itemClass: 'reseaux-sociaux__link--pinterest'
 			})
-		]
+		],
 	},
 	methods: {
 		/**
@@ -81,14 +81,14 @@ export const store = new Vue({
 
 		/**
 		 * Smoothscroll
-		 * @param {string|number} section - ID de la section à laquelle on veut smoothscroller OU position Y dans la page
+		 * @param {string|number} sectionId - ID de la section à laquelle on veut smoothscroller OU position Y dans la page
 		 */
-		smoothScrollTo(section) {
+		smoothScrollTo(sectionId) {
 			TweenLite.to(
 				window,
 				this.browserWindow.scrollSpeed,
 				{
-					scrollTo: section,
+					scrollTo: sectionId,
 					onComplete: () => this.scrollWindow() // Pour updater la position dans la page enregistrée dans l'instance Vue
 				}
 			);

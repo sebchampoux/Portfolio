@@ -71,8 +71,19 @@
 				return this.project.acf.locigiels_utilises;
 			},
 			projectImage() {
+				// Certains formats d'images n'existent pas pour tous les projects, donc on va chercher parmi les formats jusqu'à ce qu'on en trouve une qui existe
+				const possibleSizes = ['projet-single', 'medium_large', 'full'];
+				const projectImage = this.project.featuredMediaDetails.media_details.sizes;
+				let projectImageUrl = '';
+				for(let i = 0; i < possibleSizes.length; i++) {
+					if(projectImage[possibleSizes[i]]) {
+						projectImageUrl = projectImage[possibleSizes[i]].source_url;
+						break;
+					}
+				}
+
 				return {
-					src: this.project.featuredMediaDetails.media_details.sizes['projet-single'].source_url,
+					src: projectImageUrl,
 					alt: this.project.featuredMediaDetails.alt_text
 				};
 			}

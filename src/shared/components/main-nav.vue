@@ -1,7 +1,5 @@
 <template>
-	<nav
-			class="main-nav page__main-nav"
-			:class="{'main-nav--page-scrolled': showMenuShadow}">
+	<nav class="main-nav page__main-nav " :class="{'main-nav--page-scrolled': showMenuShadow}">
 		<div class="container-fluid main-nav__container">
 			<!-- Mon nom -->
 			<h1 class="site-name main-nav__site-name">

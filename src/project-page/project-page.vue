@@ -1,7 +1,9 @@
 <template>
 	<div class="page">
 		<project :project="project"></project>
-		<projects-nav></projects-nav>
+		<projects-nav
+				:previous="previousProject"
+				:next="nextProject"></projects-nav>
 	</div>
 </template>
 
@@ -17,14 +19,41 @@
 		components: {ProjectsNav, Project},
 		data() {
 			return {
-				apiRequester: new APIRequester(config.ajax_url)
+				projectSlug: '',
+				project: {},
+				projectIndex: 0,
+			}
+		},
+		methods: {
+			getProjectDetails() {
+				// Enregistrement des informations sur le projet
+				this.projectSlug = this.$route.params.slug;
+				this.project = store.projects.find(project => project.slug === this.projectSlug);
+				this.projectIndex = store.projects.findIndex(project => project.slug === this.projectSlug);
 			}
 		},
 		computed: {
-			project() {
-				const projectSlug = this.$route.params.slug;
-				return store.projects.find(project => project.slug === projectSlug);
+			previousProject() {
+				if(this.projectIndex === 0) {
+					return store.projects[store.projects.length - 1];
+				}
+				return store.projects[this.projectIndex - 1];
+			},
+
+			nextProject() {
+				if(this.projectIndex === store.projects.length - 1) {
+					return store.projects[0];
+				}
+				return store.projects[this.projectIndex + 1];
 			}
+		},
+		watch: {
+			'$route'(to, from) {
+				this.getProjectDetails();
+			}
+		},
+		beforeMount() {
+			this.getProjectDetails();
 		}
 	}
 </script>

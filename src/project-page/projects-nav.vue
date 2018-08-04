@@ -2,10 +2,10 @@
 	<nav class="projects-nav page__projects-nav">
 		<ul class="projects-nav__list">
 			<li class="projects-nav__item">
-				<a href="javascript:;" class="projects-nav__link">
+				<router-link :to="'/projet/' + previous.slug" class="projects-nav__link">
 					<i class="projects-nav__icon icon-left-open-mini"></i>
 					<span class="projects-nav__label">Précédent</span>
-				</a>
+				</router-link>
 			</li>
 			<li class="projects-nav__item">
 				<router-link to="/" class="projects-nav__link">
@@ -14,10 +14,10 @@
 				</router-link>
 			</li>
 			<li class="projects-nav__item">
-				<a href="javascript:;" class="projects-nav__link">
+				<router-link :to="'/projet/' + next.slug" class="projects-nav__link">
 					<span class="projects-nav__label">Suivant</span>
 					<i class="projects-nav__icon icon-right-open-mini"></i>
-				</a>
+				</router-link>
 			</li>
 		</ul>
 	</nav>
@@ -25,6 +25,16 @@
 
 <script>
 	export default {
-		name: "projects-nav"
+		name: "projects-nav",
+		props: {
+			previous: {
+				type: Object,
+				required: true
+			},
+			next: {
+				type: Object,
+				required: true
+			}
+		},
 	}
 </script>
