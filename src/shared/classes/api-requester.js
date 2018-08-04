@@ -24,7 +24,7 @@ export default class APIRequester {
 	 * @param {Object} params - Paramètres de la requête (voir https://developer.wordpress.org/rest-api/reference/posts/#arguments pour les arguments possibles)
 	 * @return {PromiseLike<HttpResponse>}
 	 */
-	getProjects(params) {
+	getProjects(params = {}) {
 		const requestUrl = this.apiUrl + '/projets';
 		return Vue.http.get(requestUrl, {params});
 	}
@@ -34,7 +34,7 @@ export default class APIRequester {
 	 * @param {Object} params - Paramètres de la requête (voir https://developer.wordpress.org/rest-api/reference/pages/#arguments pour les arguments possibles)
 	 * @return {PromiseLike<HttpResponse>}
 	 */
-	getPages(params) {
+	getPages(params = {}) {
 		const requestUrl = this.apiUrl + '/pages';
 		return Vue.http.get(requestUrl, {params});
 	}
@@ -54,7 +54,7 @@ export default class APIRequester {
 	 * @param {Object} params - Paramètres de la requête (voir https://developer.wordpress.org/rest-api/reference/media/#arguments pour les arguments possibles)
 	 * @return {PromiseLike<HttpResponse>}
 	 */
-	getMedias(params) {
+	getMedias(params = {}) {
 		const requestUrl = this.apiUrl + '/media';
 		return Vue.http.get(requestUrl, {params});
 	}

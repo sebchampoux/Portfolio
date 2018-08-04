@@ -181,7 +181,6 @@
 		watch: {
 			value () {
 				this.sendValue();
-				console.log('Valeur envoyée');
 			}
 		}
 	}

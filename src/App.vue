@@ -25,6 +25,12 @@
 			isLoading() {
 				return store.isLoading;
 			}
+		},
+		beforeMount() {
+			// Chargement de tout le contenu du site
+			store.isLoading = true;
+			store.loadHomePageContents();
+			store.loadProjects();
 		}
 	}
 </script>

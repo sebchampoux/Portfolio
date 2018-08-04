@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import {ReseauSocial} from "../shared/classes/reseau-social";
+import APIRequester from "../shared/classes/api-requester";
+import {config} from "../config/config";
+import {miscUtils} from "../shared/classes/misc-utils";
 
 /**
  * Store pour les trucs communs (propriétés ou méthodes) à plusieurs components
@@ -15,9 +18,11 @@ export const store = new Vue({
 			scrollSpeed: 200    // en ms
 		},
 
+		// API AJAX
+		apiRequester: new APIRequester(config.ajax_url),
+
 		// Données des pages et du site en général (partagé entre les pages)
 		projects: [],
-		medias: [],
 		homePage: {},
 		siteSettings: {},
 
@@ -78,6 +83,65 @@ export const store = new Vue({
 		 */
 		scrollWindowTo(section) {
 
+		},
+
+		/**
+		 * Charge et enregistre les projets
+		 */
+		loadProjects() {
+			// Si les projets sont déjà chargés, pas besoin de les recharger
+			if (this.projects.length !== 0) return;
+
+			this.apiRequester.getProjects().then(
+				successData => {
+					// Enregistrement des projets
+					this.projects = successData.body;
+
+					// Chargement des médias
+					const mediaIds = [];
+					this.projects.forEach(project => mediaIds.push(project.featured_media));
+					this.apiRequester.getMedias({include: mediaIds}).then(
+						success => {
+							// Enregistrement des médias dans le projet correspondant
+							const mediaList = success.body;
+							this.projects.forEach(project => {
+								project.featuredMediaDetails = mediaList.find(media => media.id === project.featured_media);
+							});
+
+							this.endLoading();
+						},
+						error => console.log(error)
+					);
+				},
+				errorData => console.log(errorData)
+			);
+		},
+
+		/**
+		 * Charge les contenus de la page d'accueil
+		 * @todo à refactor pour utiliser ID de la page d'accueil renvoyé par WordPress
+		 */
+		loadHomePageContents() {
+			// Vérifier si le contenu a déjà été chargé, pour s'éviter de le recharger inutilement
+			if (!miscUtils.isObjectEmpty(store.homePage)) return;
+
+			// Load la page d'accueil
+			this.apiRequester.getPageById(30).then(
+				successData => {
+					store.homePage = successData.body;
+					this.endLoading();
+				},
+				errorData => console.log(errorData)
+			);
+		},
+
+		/**
+		 * Mets fin au chargement si tout a été chargé
+		 */
+		endLoading() {
+			if(this.projects.length > 0 && !miscUtils.isObjectEmpty(this.homePage)) {
+				this.isLoading = false;
+			}
 		}
 	},
 	created() {
