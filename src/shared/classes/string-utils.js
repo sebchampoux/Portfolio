@@ -42,7 +42,7 @@ export const stringUtils = {
 
 	/**
 	 * Slugify une chaîne de caractères
-	 * @param string
+	 * @param {String} string - chaîne à sluggifier
 	 * @return {string}
 	 */
 	slugifyString(string) {

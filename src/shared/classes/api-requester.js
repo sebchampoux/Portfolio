@@ -1,12 +1,9 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import {stringUtils} from "./string-utils";
-
 Vue.use(VueResource);
 
 /**
  * Fait les requêtes à l'API de WordPress
- * @todo à refactor en crissant direct les paramètres dans Vue (pas besoin de concaténer en chaîne)
  */
 export default class APIRequester {
 
@@ -27,9 +24,9 @@ export default class APIRequester {
 	 * @param {Object} params - Paramètres de la requête (voir https://developer.wordpress.org/rest-api/reference/posts/#arguments pour les arguments possibles)
 	 * @return {PromiseLike<HttpResponse>}
 	 */
-	getProjects(params) {
-		const requestUrl = this.apiUrl + '/projets' + stringUtils.stringifyParams(params);
-		return Vue.http.get(requestUrl);
+	getProjects(params = {}) {
+		const requestUrl = this.apiUrl + '/projets';
+		return Vue.http.get(requestUrl, {params});
 	}
 
 	/**
@@ -37,9 +34,9 @@ export default class APIRequester {
 	 * @param {Object} params - Paramètres de la requête (voir https://developer.wordpress.org/rest-api/reference/pages/#arguments pour les arguments possibles)
 	 * @return {PromiseLike<HttpResponse>}
 	 */
-	getPages(params) {
-		const requestUrl = this.apiUrl + '/pages' + stringUtils.stringifyParams(params);
-		return Vue.http.get(requestUrl);
+	getPages(params = {}) {
+		const requestUrl = this.apiUrl + '/pages';
+		return Vue.http.get(requestUrl, {params});
 	}
 
 	/**
@@ -57,9 +54,9 @@ export default class APIRequester {
 	 * @param {Object} params - Paramètres de la requête (voir https://developer.wordpress.org/rest-api/reference/media/#arguments pour les arguments possibles)
 	 * @return {PromiseLike<HttpResponse>}
 	 */
-	getMedias(params) {
-		const requestUrl = this.apiUrl + '/media' + stringUtils.stringifyParams(params);
-		return Vue.http.get(requestUrl);
+	getMedias(params = {}) {
+		const requestUrl = this.apiUrl + '/media';
+		return Vue.http.get(requestUrl, {params});
 	}
 
 	/**

@@ -51,7 +51,7 @@
 					for(let i = 0; i < coequipiers.length; i++) {
 						// Noms et portfolios
 						if(coequipiers[i].portfolio_coequipier) {
-							contexteString += `<a href="${ coequipiers[i].portfolio_coequipier }">${ coequipiers[i].nom_coequipier }</a>`;
+							contexteString += `<a href="${ coequipiers[i].portfolio_coequipier }" target="_blank">${ coequipiers[i].nom_coequipier }</a>`;
 						} else {
 							contexteString += coequipiers[i].nom_coequipier;
 						}

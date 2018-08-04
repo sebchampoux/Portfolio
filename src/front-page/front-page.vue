@@ -20,7 +20,11 @@
 </template>
 
 <script>
+	import {miscUtils} from "../shared/classes/misc-utils";
+	import {config} from "../config/config";
+	import APIRequester from '../shared/classes/api-requester';
 	import {store} from "../store/store";
+
 	import MainNav from "../shared/components/main-nav";
 	import BackToTop from "../shared/components/back-to-top";
 	import HeroArea from "./hero-area";
@@ -44,20 +48,18 @@
 			BackToTop,
 			MainNav
 		},
+		data() {
+			return {
+				apiRequester: new APIRequester(config.ajax_url)
+			}
+		},
 		computed: {
 			showContactForm() {
 				return store.showContactForm;
 			},
-			/**
-			 * @todo temporaire!
-			 */
 			homePage() {
 				return store.homePage;
 			}
 		}
 	}
 </script>
-
-<style scoped>
-
-</style>

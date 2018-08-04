@@ -2,8 +2,8 @@ import Vue from 'vue';
 import {TweenLite, ScrollToPlugin} from 'gsap/all';
 import {ReseauSocial} from "../shared/classes/reseau-social";
 import APIRequester from "../shared/classes/api-requester";
-
 import {config} from "../config/config";
+import {miscUtils} from "../shared/classes/misc-utils";
 
 /**
  * Store pour les trucs communs (propriétés ou méthodes) à plusieurs components
@@ -19,10 +19,13 @@ export const store = new Vue({
 			scrollSpeed: 1.25  // en secs
 		},
 
-		// API Rest
+		// API AJAX
 		apiRequester: new APIRequester(config.ajax_url),
+
+		// Données des pages et du site en général (partagé entre les pages)
 		projects: [],
 		homePage: {},
+		siteSettings: {},
 
 		// Données et état partagés entre les pages
 		showContactForm: false,
@@ -62,11 +65,10 @@ export const store = new Vue({
 		/**
 		 * Appelé lorsque la fenêtre est resizée
 		 * Enregistre les nouvelles dimensions de l'écran
-		 * @param {event} e
 		 */
-		resizeWindow(e) {
-			this.browserWindow.width = e.currentTarget.innerWidth;
-			this.browserWindow.height = e.currentTarget.innerHeight;
+		resizeWindow() {
+			this.browserWindow.width = window.innerWidth;
+			this.browserWindow.height = window.innerHeight;
 		},
 
 		/**
@@ -93,60 +95,62 @@ export const store = new Vue({
 		},
 
 		/**
-		 * Charge les projets à partir de l'API et les enregistre dans projects
-		 * @param {function} successCallback
+		 * Charge et enregistre les projets
 		 */
-		loadProjects(successCallback) {
-			// Chargement des projets
-			this.apiRequester.getProjects({}).then(
-				response => {
-					this.projects = response.body;
-					this.loadProjectMedias();
-					if (successCallback) {
-						successCallback();
-					}
-				},
-				errorResponse => {
-					console.log('Erreur lors du chargement des projets');
-				});
-		},
+		loadProjects() {
+			// Si les projets sont déjà chargés, pas besoin de les recharger
+			if (this.projects.length !== 0) return;
 
-		/**
-		 * Charge les informations des médias de tous les projets
-		 * @param {function} successCallback
-		 */
-		loadProjectMedias(successCallback) {
-			this.projects.forEach(project => {
-				this.apiRequester.getMediaById(project.featured_media).then(
-					response => {
-						project.featuredMediaDetails = response.body;
-						if (successCallback) {
-							successCallback();
-						}
-					},
-					errorResponse => {
-						console.log('Erreur lors du chargement du media ayant comme ID : ' + mediaId);
-					}
-				);
-			});
-		},
+			this.apiRequester.getProjects().then(
+				successData => {
+					// Enregistrement des projets
+					this.projects = successData.body;
 
-		/**
-		 * Charge la page d'accueil
-		 * @param {function} successCallback
-		 */
-		loadHomePage(successCallback) {
-			this.apiRequester.getPageById(30).then(
-				response => {
-					this.homePage = response.body;
-					if (successCallback) {
-						successCallback();
-					}
+					// Chargement des médias
+					const mediaIds = [];
+					this.projects.forEach(project => mediaIds.push(project.featured_media));
+					this.apiRequester.getMedias({include: mediaIds}).then(
+						success => {
+							// Enregistrement des médias dans le projet correspondant
+							const mediaList = success.body;
+							this.projects.forEach(project => {
+								project.featuredMediaDetails = mediaList.find(media => media.id === project.featured_media);
+							});
+
+							this.endLoading();
+						},
+						error => console.log(error)
+					);
 				},
-				errorResponse => {
-					console.log('Erreur lors du chargement de la page d\'accueil');
-				}
+				errorData => console.log(errorData)
 			);
+		},
+
+		/**
+		 * Charge les contenus de la page d'accueil
+		 * @todo à refactor pour utiliser ID de la page d'accueil renvoyé par WordPress
+		 */
+		loadHomePageContents() {
+			// Vérifier si le contenu a déjà été chargé, pour s'éviter de le recharger inutilement
+			if (!miscUtils.isObjectEmpty(store.homePage)) return;
+
+			// Load la page d'accueil
+			this.apiRequester.getPageById(30).then(
+				successData => {
+					store.homePage = successData.body;
+					this.endLoading();
+				},
+				errorData => console.log(errorData)
+			);
+		},
+
+		/**
+		 * Mets fin au chargement si tout a été chargé
+		 */
+		endLoading() {
+			if(this.projects.length > 0 && !miscUtils.isObjectEmpty(this.homePage)) {
+				this.isLoading = false;
+			}
 		}
 	},
 	created() {
@@ -154,19 +158,8 @@ export const store = new Vue({
 		window.addEventListener('resize', this.resizeWindow);
 		window.addEventListener('scroll', this.scrollWindow);
 
-		// Dimensions de base de l'écran
-		this.browserWindow.width = window.innerWidth;
-		this.browserWindow.height = window.innerHeight;
-		this.browserWindow.scroll = window.scrollY;
-
-		// Exécute toutes les requêtes à l'API pour charger le contenu de la page d'accueil
-		// @TODO à retirer d'ici, temporaire
-		this.isLoading = true;
-		this.loadProjects(() => {
-			this.loadHomePage(() => {
-				this.isLoading = false;
-			});
-		});
+		this.resizeWindow();
+		this.scrollWindow();
 	},
 	beforeDestroy() {
 		// Écouteurs d'évènement
