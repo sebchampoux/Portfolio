@@ -8,8 +8,20 @@
 	}
 }
 
+.hero-area--top-nav-padding {
+	// Si la navigation est là, ajoute du padding-top pour que la zone hero se glisse en-dessous
+	padding-top: $nav-height;
 
-// Elems
+	.hero-area__feat-img {
+		display: block;
+		padding-top: $nav-height;
+
+		@include at-most(bp(sm)) {
+			padding: 0;
+		}
+	}
+}
+
 .hero-area__feat-img {
 	@extend %responsive-image-cover;
 
@@ -46,20 +58,4 @@
 	height: 100%;
 	align-items: center;
 	justify-content: flex-end;
-}
-
-
-// Mods
-.hero-area--top-nav-padding {
-	// Si la navigation est là, ajoute du padding-top pour que la zone hero se glisse en-dessous
-	padding-top: $nav-height;
-
-	.hero-area__feat-img {
-		display: block;
-		padding-top: $nav-height;
-
-		@include at-most(bp(sm)) {
-			padding: 0;
-		}
-	}
 }

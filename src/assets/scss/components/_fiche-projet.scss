@@ -12,8 +12,18 @@
 	}
 }
 
+.fiche-projet--layout--inverted {
+	@include at-least(bp($ficheProjet-mobileBP)) {
+		.fiche-projet__img {
+			order: 1;
+			top: auto;
+			left: auto;
+			bottom: -15px;
+			right: -10px;
+		}
+	}
+}
 
-// Elems
 .fiche-projet__img {
 	width: 45%;
 	height: 350px;
@@ -31,19 +41,5 @@
 	@include at-most(bp($ficheProjet-mobileBP)) {
 		width: 100%;
 		height: 350px;
-	}
-}
-
-
-// Mods
-.fiche-projet--layout--inverted {
-	@include at-least(bp($ficheProjet-mobileBP)) {
-		.fiche-projet__img {
-			order: 1;
-			top: auto;
-			left: auto;
-			bottom: -15px;
-			right: -10px;
-		}
 	}
 }

@@ -48,14 +48,6 @@
 	}
 }
 
-
-// Elems
-.button__icon {
-	margin-right: $button-iconMargin;
-}
-
-
-// Mods
 .button--size--full {
 	width: 100%;
 	padding: 25px 0;
@@ -92,6 +84,10 @@
 	&::after {
 		content: none;
 	}
+}
+
+.button__icon {
+	margin-right: $button-iconMargin;
 }
 
 // Si l'icône est à droite du texte du bouton plutôt qu'à sa gauche

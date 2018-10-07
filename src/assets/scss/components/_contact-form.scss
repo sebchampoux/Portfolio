@@ -6,7 +6,14 @@
 	background-color: $color-light-primary;
 }
 
-// Elems
+.contact-form--top-nav-pd {
+	padding-top: $nav-height;
+
+	.contact-form__close-btn {
+		top: $nav-height;
+	}
+}
+
 .contact-form__close-btn {
 	border: none;
 	background-color: transparent;
@@ -41,13 +48,4 @@
 	font-style: italic;
 
 	margin-bottom: 30px;
-}
-
-// Mods
-.contact-form--top-nav-pd {
-	padding-top: $nav-height;
-
-	.contact-form__close-btn {
-		top: $nav-height;
-	}
 }

@@ -31,42 +31,6 @@
 	}
 }
 
-// Elems
-.text-box__title {
-	letter-spacing: 6px;
-	font-weight: $font-weight-bold;
-
-	@include at-most(bp(sm)) {
-		font-size: $font-size-title-3;
-	}
-}
-
-.text-box__subtitle {
-	font: $font-weight-light $font-size-title-6 $font-family-body;
-	text-transform: none;
-
-	margin-bottom: 40px;
-
-	@include at-most(bp(sm)) {
-		font-size: $font-size-body;
-	}
-}
-
-.text-box__text {
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-.text-box__separation {
-	width: 30%;
-	height: 2px;
-	background-color: $color-dark-primary;
-	margin: 10px 0 25px;
-}
-
-
-// Mods
 .text-box--content-centered {
 	text-align: center;
 	align-items: center;
@@ -86,6 +50,15 @@
 	padding: 20px;
 }
 
+.text-box__title {
+	letter-spacing: 6px;
+	font-weight: $font-weight-bold;
+
+	@include at-most(bp(sm)) {
+		font-size: $font-size-title-3;
+	}
+}
+
 .text-box__title--boxed-top {
 	font-size: $font-size-title-4;
 	font-weight: $font-weight-normal;
@@ -101,6 +74,30 @@
 	z-index: 3;
 }
 
+.text-box__subtitle {
+	font: $font-weight-light $font-size-title-6 $font-family-body;
+	text-transform: none;
+
+	margin-bottom: 40px;
+
+	@include at-most(bp(sm)) {
+		font-size: $font-size-body;
+	}
+}
+
+.text-box__text {
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 .text-box__text--align--rt {
 	align-self: flex-end;
+}
+
+.text-box__separation {
+	width: 30%;
+	height: 2px;
+	background-color: $color-dark-primary;
+	margin: 10px 0 25px;
 }

@@ -2,7 +2,6 @@
 
 }
 
-// Elems
 .form__list {
 	list-style-type: none;
 	padding: 0;
@@ -17,6 +16,17 @@
 	position: relative;
 }
 
+.form__field-error-msg {
+	color: $formLabel-invalid-color;
+	font-size: $font-size-smaller;
+}
+
+.form__field-infos {
+	font-size: $font-size-smaller;
+	font-style: italic;
+	color: rgba($color-dark-primary, 0.7);
+}
+
 .form__label {
 	color: rgba($color-dark-primary, 0.7);
 
@@ -28,6 +38,12 @@
 	transition: 0.2s all ease-out;
 
 	pointer-events: none;
+}
+
+.form__label--over-input {
+	top: -25px;
+	font-size: $font-size-smaller;
+	pointer-events: initial;
 }
 
 .form__text {
@@ -50,33 +66,6 @@
 	}
 }
 
-.form__field-error-msg {
-	color: $formLabel-invalid-color;
-	font-size: $font-size-smaller;
-}
-
-.form__field-infos {
-	font-size: $font-size-smaller;
-	font-style: italic;
-	color: rgba($color-dark-primary, 0.7);
-}
-
-.form__buttons-wrapper {
-	display: flex;
-	justify-content: flex-end;
-}
-
-// Mods
-.form__input-wrapper--type--radio {
-	display: flex;
-	align-items: center;
-	margin-bottom: 5px;
-
-	.form__text {
-		margin: 0;
-	}
-}
-
 .form__input--type--text {
 	width: 100%;
 }
@@ -91,14 +80,29 @@
 	margin-right: 10px;
 }
 
-.form__input--type--checkbox {}
+.form__input--type--checkbox {
+	margin-right: 10px;
+}
 
 .form__input--state--invalid {
 	border-color: $formLabel-invalid-color;
 }
 
-.form__label--over-input {
-	top: -25px;
-	font-size: $font-size-smaller;
-	pointer-events: initial;
+.form__buttons-wrapper {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.form__input-wrapper{
+
+}
+
+.form__input-wrapper--type--radio {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+
+	.form__text {
+		margin: 0;
+	}
 }

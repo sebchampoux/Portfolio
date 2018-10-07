@@ -8,7 +8,10 @@
 	position: relative;
 }
 
-// Elements
+.main-nav--page-scrolled {
+	@extend %drop-shadow;
+}
+
 .main-nav__container {
 	display: flex;
 	justify-content: space-between;
@@ -30,9 +33,4 @@
 			top: 0;
 			right: 0;
 	}
-}
-
-// Modifiers
-.main-nav--page-scrolled {
-	@extend %drop-shadow;
 }

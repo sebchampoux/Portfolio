@@ -8,7 +8,10 @@
 	list-style-type: none;
 }
 
-// Elems
+.reseaux-sociaux--icons-centered {
+	justify-content: center;
+}
+
 .reseaux-sociaux__item {
 	margin: 0;
 	padding: 0;
@@ -27,11 +30,6 @@
 		color: $color-accent-primary;
 		text-decoration: none;
 	}
-}
-
-// Mods
-.reseaux-sociaux--icons-centered {
-	justify-content: center;
 }
 
 .reseaux-sociaux__link--linked-in {
