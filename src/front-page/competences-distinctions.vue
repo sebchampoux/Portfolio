@@ -26,12 +26,7 @@
 									:alt="competence.nom_competence"
 									:title="competence.nom_competence"
 									class="competences__icon">
-							<div class="competences__bande">
-								<div
-										class="competences__bande-fill"
-										:style="{'width': competence.pourcentage_maitrise + '%'}">
-								</div>
-							</div>
+							<p class="competence__name">{{ competence.nom_competence }}</p>
 						</li>
 					</ul>
 				</div>

@@ -2,35 +2,38 @@
 	padding: 0;
 	margin: 0;
 	list-style-type: none;
+
+	display: flex;
+	flex-flow: row wrap;
 }
 
 // Elems
 .competences__item {
 	padding: 0;
-	margin: 0 0 20px 0;
+	margin: 0 0 40px 0;
+	width: 50%;
 
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+
+	@include at-most(450px) {
+		width: 100%;
+		margin-bottom: 20px;
+	}
 }
 
 .competences__icon {
 	max-height: 50px;
 	max-width: 40px;
 	opacity: 0.65;
+	margin-right: calculateRem(30px);
 }
 
-.competences__bande {
-	width: 90%;
-	background-color: $color-neutral-primary;
-	height: 15px;
+.competence__name {
+	margin: 0;
+	font-size: $font-size-title-6;
 
-	@include at-most(bp(xl)) {
-		width: 85%;
+	@include at-most(bp(sm)) {
+		font-size: $font-size-body;
 	}
-}
-
-.competences__bande-fill {
-	height: 100%;
-	background-color: $color-accent-secondary;
 }
