@@ -1,5 +1,5 @@
 <template>
-	<header class="hero-area hero-area--top-nav-padding page__hero-area">
+	<header class="hero-area hero-area--top-nav">
 		<img src="../assets/imgs/hero-area__feat-img.jpg" alt="Leviathan @ Canada's Wonderland" class="hero-area__feat-img">
 
 		<div class="container hero-area__container">

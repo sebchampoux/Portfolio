@@ -1,11 +1,6 @@
 <template>
 	<nav class="main-nav page__main-nav " :class="{'main-nav--page-scrolled': showMenuShadow}">
 		<div class="container-fluid main-nav__container">
-			<!-- Mon nom -->
-			<h1 class="site-name main-nav__site-name">
-				<a href="#" class="site-name__link" @click.prevent="scrollToSection('#top-anchor')">Sébastien Champoux</a>
-			</h1>
-
 			<!-- Menu principal -->
 			<transition
 					name="custom-classes-transition"

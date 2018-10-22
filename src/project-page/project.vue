@@ -42,12 +42,12 @@
 				let contexteString = '';
 
 				// Contexte de réalisation
-				contexteString += this.project.acf.contexte_realisation + ', ';
+				contexteString += this.project.acf.contexte_realisation;
 
 				// Liste des coéquipiers si nécessaire
 				const coequipiers = this.project.acf.coequipiers;
 				if(coequipiers) {
-					contexteString += 'réalisé avec ';
+					contexteString += ', réalisé avec ';
 					for(let i = 0; i < coequipiers.length; i++) {
 						// Noms et portfolios
 						if(coequipiers[i].portfolio_coequipier) {
@@ -62,8 +62,6 @@
 							contexteString += ', ';
 						}
 					}
-				} else {
-					contexteString += 'réalisé seul'
 				}
 				return contexteString;
 			},

@@ -8,16 +8,18 @@
 	}
 }
 
-.hero-area--top-nav-padding {
-	// Si la navigation est là, ajoute du padding-top pour que la zone hero se glisse en-dessous
-	padding-top: $nav-height;
-
-	.hero-area__feat-img {
-		display: block;
+.hero-area--top-nav {
+	// Ajoute padding lorsque la nav top est présente
+	@include at-most(bp(xl)) {
 		padding-top: $nav-height;
 
-		@include at-most(bp(sm)) {
-			padding: 0;
+		.hero-area__feat-img {
+			display: block;
+			padding-top: $nav-height;
+
+			@include at-most(bp(sm)) {
+				padding: 0;
+			}
 		}
 	}
 }
