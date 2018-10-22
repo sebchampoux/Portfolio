@@ -5,11 +5,19 @@
 
 // Elems
 .cv-contact__button-wrapper {
-	@include at-most(bp(md)) {
-		margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 30px;
 
-		&:last-child {
-			margin-bottom: 0;
-		}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.cv-contact__email {
+	text-align: center;
+	@extend .h3;
+
+	@include at-most(bp(sm)) {
+		font-size: $font-size-title-6;
 	}
 }

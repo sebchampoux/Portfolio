@@ -95,11 +95,8 @@
 					new MenuItem({
 						slug: 'contact',
 						label: 'Contact',
-						link: () => {
-							store.showContactForm = !store.showContactForm;
-							this.hamburgerIsOpen = false;
-						},
-						type: 'method'
+						link: '#cv-contact',
+						type: 'anchor'
 					})
 				]
 			};

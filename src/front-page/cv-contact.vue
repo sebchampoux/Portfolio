@@ -2,12 +2,12 @@
 	<section class="cv-contact" id="cv-contact">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-5 offset-lg-1 col-md-6 cv-contact__button-wrapper">
+				<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 cv-contact__button-wrapper">
 					<a :href="cvUrl" target="_blank" class="button button--size--full"><i
 							class="button__icon icon-doc-text"></i>Mon CV</a>
 				</div>
-				<div class="col-lg-5 col-md-6 cv-contact__button-wrapper">
-					<button class="button button--size--full" @click.prevent="toggleContactForm"><i class="button__icon icon-mail"></i>Me contacter</button>
+				<div class="col-12 cv-contact__button-wrapper">
+					<a href="mailto:contact@sebastienchampoux.com" target="_blank" class="cv-contact__email">contact@sebastienchampoux.com</a>
 				</div>
 			</div>
 		</div>

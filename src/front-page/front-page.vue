@@ -14,8 +14,6 @@
 			<cv-contact></cv-contact>
 			<page-footer></page-footer>
 		</div>
-
-		<contact-form></contact-form>
 	</div>
 </template>
 
