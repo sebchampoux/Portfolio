@@ -6,8 +6,8 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, './dist'),
 
-		// publicPath: '/portfolio/wp-content/themes/portfolio-vue/dist/',
-		publicPath: '/dist/',
+		// publicPath: '/portfolio/wp-content/themes/portfolio-vue/dist/',  // PROD
+		publicPath: '/dist/',                                               // DEV
 
 		filename: 'build.js'
 	},

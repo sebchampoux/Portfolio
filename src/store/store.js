@@ -32,30 +32,30 @@ export const store = new Vue({
 		isLoading: false,
 		socialNetworks: [
 			new ReseauSocial({
-				slug: 'linked-in',
-				siteName: 'Linked In',
-				link: 'javascript:;',
-				iconClass: 'icon-linkedin',
-				itemClass: 'reseaux-sociaux__link--linked-in'
-			}),
-			new ReseauSocial({
 				slug: 'behance',
 				siteName: 'Behance',
-				link: 'javascript:;',
+				link: 'https://www.behance.net/1543495fa3a',
 				iconClass: 'icon-behance',
 				itemClass: 'reseaux-sociaux__link--behance'
 			}),
 			new ReseauSocial({
+				slug: 'linked-in',
+				siteName: 'Linked In',
+				link: 'https://www.linkedin.com/in/sébastien-champoux-74294b149/',
+				iconClass: 'icon-linkedin',
+				itemClass: 'reseaux-sociaux__link--linked-in'
+			}),
+			new ReseauSocial({
 				slug: 'youtube',
 				siteName: 'Youtube',
-				link: 'javascript:;',
+				link: 'https://www.youtube.com/channel/UCujuoy0YDdFIMlwehIjpswg',
 				iconClass: 'icon-youtube-play',
 				itemClass: 'reseaux-sociaux__link--youtube'
 			}),
 			new ReseauSocial({
 				slug: 'pinterest',
 				siteName: 'Pinterest',
-				link: 'javascript:;',
+				link: 'https://www.pinterest.fr/champssss/',
 				iconClass: 'icon-pinterest',
 				itemClass: 'reseaux-sociaux__link--pinterest'
 			})
