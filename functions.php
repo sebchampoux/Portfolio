@@ -40,6 +40,8 @@ class Portfolio extends Timber\Site {
 		add_action( 'after_setup_theme', array( $this, 'theme_setup' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_theme_scripts' ) );
 		add_action( 'admin_head', array( $this, 'fix_svg' ) );
+		add_action( 'login_enqueue_scripts', array( $this, 'login_custom_css' ) );
+		add_action( 'login_headerurl', array( $this, 'login_headerurl' ) );
 		$this->acf_options_page();
 		$this->load_dependencies();
 
@@ -182,6 +184,26 @@ class Portfolio extends Timber\Site {
              height: auto !important;
         }
         </style>';
+	}
+
+	/**
+	 * CSS personnalisé pour la page de login
+	 */
+	public function login_custom_css() {
+		wp_enqueue_style( 'main-stylesheet', get_stylesheet_directory_uri() . '/static/css/login-screen.css' );
+	}
+
+	/**
+	 * Modifie le URL du logo de la page login
+	 *
+	 * @param $url string URL original
+	 *
+	 * @return string url modifié
+	 */
+	public function login_headerurl( $url ) {
+		$url = get_home_url();
+
+		return $url;
 	}
 }
 

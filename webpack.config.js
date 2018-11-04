@@ -1,3 +1,4 @@
+
 var path = require('path');
 var webpack = require('webpack');
 
@@ -6,8 +7,9 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, './dist'),
 
-		// publicPath: '/portfolio/wp-content/themes/portfolio-vue/dist/',  // PROD
 		publicPath: '/dist/',                                               // DEV
+		// publicPath: '/portfolio/wp-content/themes/portfolio-vue/dist/',  // PROD LOCAL
+		// publicPath: '/wp-content/themes/portfolio-vue/dist/',  // PROD LOCAL
 
 		filename: 'build.js'
 	},
