@@ -9,7 +9,7 @@ module.exports = {
 
 		publicPath: '/dist/',                                               // DEV
 		// publicPath: '/portfolio/wp-content/themes/portfolio-vue/dist/',  // PROD LOCAL
-		// publicPath: '/wp-content/themes/portfolio-vue/dist/',  // PROD LOCAL
+		// publicPath: '/wp-content/themes/portfolio-vue/dist/',  // PROD
 
 		filename: 'build.js'
 	},

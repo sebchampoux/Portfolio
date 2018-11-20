@@ -94,6 +94,8 @@ class Portfolio extends Timber\Site {
 	 * Ajoute les scripts et les styles + localisation
 	 */
 	public function add_theme_scripts() {
+		wp_enqueue_style( 'portfolio-fonts', 'https://fonts.googleapis.com/css?family=Oswald:300,400,700|Raleway:300,400,700' );
+
 		wp_enqueue_script( 'portfolio-build', get_template_directory_uri() . '/dist/build.js', null, null, true );
 		wp_localize_script( 'portfolio-build', 'portfolio_localiz', array(
 			'rest_url' => get_rest_url( null, 'wp/v2' )

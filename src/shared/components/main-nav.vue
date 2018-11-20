@@ -114,6 +114,7 @@
 			 * @param {string} anchor - ID de la section
 			 */
 			scrollToSection(anchor) {
+				this.hamburgerIsOpen = false;
 				store.smoothScrollTo(anchor);
 			}
 		},
