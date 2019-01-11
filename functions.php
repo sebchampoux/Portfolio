@@ -10,6 +10,7 @@ if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function () {
 		echo '<div class="error"><p>Timber n\'est pas activé.  Il est nécessaire de l\'activer ici : <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
 	} );
+
 	return;
 }
 
@@ -89,12 +90,14 @@ class Portfolio extends Timber\Site {
 	 * Ajoute les scripts et les styles + localisation
 	 */
 	public function add_theme_scripts() {
+		// Styles
 		wp_enqueue_style( 'portfolio-fonts', 'https://fonts.googleapis.com/css?family=Oswald:300,400,700|Raleway:300,400,700' );
+		wp_enqueue_style( 'portfolio-fontello', get_stylesheet_directory_uri() . '/static/fontello/css/portfolio.css' );
+		wp_enqueue_style( 'portfolio-main-css', get_stylesheet_directory_uri() . '/static/css/styles.css' );
 
-//		wp_enqueue_script( 'portfolio-build', get_template_directory_uri() . '/dist/build.js', null, null, true );
-//		wp_localize_script( 'portfolio-build', 'portfolio_localiz', array(
-//			'rest_url' => get_rest_url( null, 'wp/v2' )
-//		) );
+		// Scripts
+		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'portfolio-dist', get_stylesheet_directory_uri() . '/static/js/dist/build.js', 'jquery', '2.0.0', false );
 	}
 
 	/**
@@ -175,12 +178,14 @@ class Portfolio extends Timber\Site {
 	 * Aussi pour les SVG
 	 */
 	public function fix_svg() {
-		echo '<style type="text/css">
-        .attachment-266x266, .thumbnail img {
-             width: 100% !important;
-             height: auto !important;
-        }
-        </style>';
+		?>
+		<style type="text/css">
+			.attachment-266x266, .thumbnail img {
+				width: 100% !important;
+				height: auto !important;
+			}
+		</style>
+		<?php
 	}
 
 	/**
@@ -199,6 +204,7 @@ class Portfolio extends Timber\Site {
 	 */
 	public function login_headerurl( $url ) {
 		$url = get_home_url();
+
 		return $url;
 	}
 }

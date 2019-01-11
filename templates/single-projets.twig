@@ -1,1 +1,10 @@
-{% extends '' %}
+{% extends 'base.twig' %}
+
+{% block navigation %}
+	{% include 'partials/navigation/projects-navigation.twig' %}
+{% endblock %}
+
+{% block content %}
+	{% include 'partials/project-page/project-presentation.twig' %}
+{% endblock %}
+

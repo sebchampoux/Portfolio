@@ -7,20 +7,19 @@
 {% endblock %}
 
 <body class="{{ body_class }}" data-template="base.twig">
+<div class="page">
+	{% block navigation %}
+	{% endblock %}
 
-{% block navigation %}
-{% endblock %}
+	{% block header %}
+	{% endblock %}
 
-{% block header %}
-{% endblock %}
+	{% block content %}
+	{% endblock content %}
 
-{% block content %}
-{% endblock content %}
-
-{% block footer %}
-{% endblock %}
-
+	{% block footer %}
+	{% endblock %}
+</div>
 {{ function('wp_footer') }}
-
 </body>
 </html>
