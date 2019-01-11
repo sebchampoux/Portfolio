@@ -9,7 +9,7 @@
 					<div class="a-propos__text" v-html="presentation"></div>
 				</article>
 				<div class="col-xl-4 offset-xl-3 col-lg-5 offset-lg-2 col-md-6 a-propos__photo-wrapper">
-					<img src="../assets/imgs/a-propos__ma-photo.jpg" alt="Moi" class="a-propos__ma-photo">
+					<img src="../../static/imgs/a-propos__ma-photo.jpg" alt="Moi" class="a-propos__ma-photo">
 				</div>
 			</div>
 		</div>

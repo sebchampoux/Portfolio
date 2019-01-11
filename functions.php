@@ -10,11 +10,6 @@ if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function () {
 		echo '<div class="error"><p>Timber n\'est pas activé.  Il est nécessaire de l\'activer ici : <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
 	} );
-
-//	add_filter('template_include', function($template) {
-//		return get_stylesheet_directory() . '/static/no-timber.html';
-//	});
-
 	return;
 }
 
@@ -96,10 +91,10 @@ class Portfolio extends Timber\Site {
 	public function add_theme_scripts() {
 		wp_enqueue_style( 'portfolio-fonts', 'https://fonts.googleapis.com/css?family=Oswald:300,400,700|Raleway:300,400,700' );
 
-		wp_enqueue_script( 'portfolio-build', get_template_directory_uri() . '/dist/build.js', null, null, true );
-		wp_localize_script( 'portfolio-build', 'portfolio_localiz', array(
-			'rest_url' => get_rest_url( null, 'wp/v2' )
-		) );
+//		wp_enqueue_script( 'portfolio-build', get_template_directory_uri() . '/dist/build.js', null, null, true );
+//		wp_localize_script( 'portfolio-build', 'portfolio_localiz', array(
+//			'rest_url' => get_rest_url( null, 'wp/v2' )
+//		) );
 	}
 
 	/**
@@ -204,7 +199,6 @@ class Portfolio extends Timber\Site {
 	 */
 	public function login_headerurl( $url ) {
 		$url = get_home_url();
-
 		return $url;
 	}
 }
