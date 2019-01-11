@@ -7,5 +7,16 @@
 {% endblock %}
 
 {% block header %}
-	{% include 'partials/front-page/zone-hero.twig' %}
+	{% include 'partials/header/zone-hero.twig' %}
+{% endblock %}
+
+{% block content %}
+	{% include 'partials/front-page/a-propos.twig' %}
+	{% include 'partials/front-page/galerie-projets.twig' %}
+	{% include 'partials/front-page/competences-distinctions.twig' %}
+	{% include 'partials/front-page/cv-contact.twig' %}
+{% endblock %}
+
+{% block footer %}
+	{% include 'partials/footer/main-footer.twig' %}
 {% endblock %}
