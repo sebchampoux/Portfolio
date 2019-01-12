@@ -2,11 +2,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 cv-contact__button-wrapper">
-				<a href="javascript:;" target="_blank" class="button button--size--full"><i
+				<a href="{{ Image(post.cv_telechargement).src }}" target="_blank" class="button button--size--full"><i
 							class="button__icon icon-doc-text"></i>{{ __('Mon CV', 'portfolio') }}</a>
 			</div>
 			<div class="col-12 cv-contact__button-wrapper">
-				<a href="mailto:contact@sebastienchampoux.com" target="_blank" class="cv-contact__email">contact@sebastienchampoux.com</a>
+				<a href="mailto:{{ post.adresse_courriel_contact }}" target="_blank" class="cv-contact__email">{{ post.adresse_courriel_contact }}</a>
 			</div>
 		</div>
 	</div>

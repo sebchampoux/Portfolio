@@ -4,9 +4,10 @@
 .icon-cancel:before { content: '\e802'; } /* '' */
 .icon-left-open-mini:before { content: '\e803'; } /* '' */
 .icon-home:before { content: '\e804'; } /* '' */
-.icon-linkedin:before { content: '\f0e1'; } /* '' */
+.icon-linked-in:before { content: '\f0e1'; } /* '' */
 .icon-doc-text:before { content: '\f0f6'; } /* '' */
-.icon-youtube-play:before { content: '\f16a'; } /* '' */
+.icon-youtube:before { content: '\f16a'; } /* '' */
 .icon-up:before { content: '\f176'; } /* '' */
 .icon-behance:before { content: '\f1b4'; } /* '' */
+.icon-deviantart:before { content: '\f1bd'; } /* '' */
 .icon-pinterest:before { content: '\f231'; } /* '' */

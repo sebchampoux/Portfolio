@@ -29,7 +29,7 @@
 	height: 350px;
 
 	@extend %responsive-image-cover;
-	object-position: center;
+	object-position: top center;
 
 	position: relative;
 

@@ -52,7 +52,9 @@ class Portfolio extends Timber\Site {
 	 * @return array Contexte avec les ajouts dedans
 	 */
 	public function add_to_context( $context ) {
-		$context['some_stuff'] = 'Something new';
+		$context['header']               = array( 'hero_image' => get_header_image() );
+		$context['top_menu']             = new Timber\Menu( 'top' );
+		$context['social_networks'] = get_field('reseaux_sociaux', 'option');
 
 		return $context;
 	}

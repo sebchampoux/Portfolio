@@ -9,16 +9,10 @@
 	<div class="container footer__container">
 		<div class="row">
 			<div class="col-12">
-				<ul class="reseaux-sociaux reseaux-sociaux--icons-centered footer__reseaux-sociaux">
-					<li class="reseaux-sociaux__item">
-						<a href="javascript:;"
-						   target="_blank"
-						   rel="noopener"
-						   class="reseaux-sociaux__link reseaux-sociaux__link--color--inverted">
-							<i class="reseaux-sociaux__icon"></i>
-						</a>
-					</li>
-				</ul>
+				{% include 'partials/misc/social-networks.twig' with {
+					'list_class': 'reseaux-sociaux--icons-centered',
+					'links_class': 'reseaux-sociaux__link--color--inverted'
+				} %}
 			</div>
 		</div>
 		<div class="row">

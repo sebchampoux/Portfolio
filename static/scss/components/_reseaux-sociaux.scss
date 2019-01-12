@@ -32,6 +32,15 @@
 	}
 }
 
+.reseaux-sociaux__link--size--small {
+	font-size: $font-size-title-4;
+	padding: 15px;
+}
+
+.reseaux-sociaux__link--color--inverted {
+	color: $color-light-primary;
+}
+
 .reseaux-sociaux__link--linked-in {
 	&:hover {
 		color: #0077b5;
@@ -56,11 +65,8 @@
 	}
 }
 
-.reseaux-sociaux__link--size--small {
-	font-size: $font-size-title-4;
-	padding: 15px;
-}
-
-.reseaux-sociaux__link--color--inverted {
-	color: $color-light-primary;
+.reseaux-sociaux__link--deviantart {
+	&:hover {
+		color: #05cc47;
+	}
 }

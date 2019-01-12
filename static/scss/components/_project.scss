@@ -27,6 +27,7 @@
 	width: 100%;
 	height: 500px;
 	@extend %responsive-image-cover;
+	object-position: top center;
 }
 
 .project__title {

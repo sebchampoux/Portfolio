@@ -1,4 +1,4 @@
-<section class="competences-distinctions">
+<section class="competences-distinctions" id="competences-distinctions">
 	<img src="{{ theme.path }}/static/svg/background_montagneRusse2.svg" alt=""
 	     class="bg-coaster competences-distinctions__bg-coaster">
 
@@ -17,12 +17,16 @@
 					     class="competences-distinctions__title-icon">
 					<h2 class="competences-distinctions__title">{{ __('Compétences', 'portfolio') }}</h2>
 				</div>
-				<ul class="competences competences-distinctions__competences">
-					<li class="competences__item">
-						<img src="" alt="" class="competences__icon">
-						<p class="competence__name">NOM COMPÉTENCE</p>
-					</li>
-				</ul>
+				{% if post.liste_competences %}
+					<ul class="competences competences-distinctions__competences">
+						{% for competence in post.meta('liste_competences') %}
+							<li class="competences__item">
+								<img src="{{ Image(competence.icone_competence).src }}" alt="{{ competence.nom_competence }}" class="competences__icon">
+								<p class="competence__name">{{ competence.nom_competence }}</p>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
 			</div>
 			<div class="col-md-6" id="distinctions">
 				<div class="competences-distinctions__title-wrapper">
@@ -30,13 +34,17 @@
 					     class="competences-distinctions__title-icon">
 					<h2 class="competences-distinctions__title">{{ __('Distinctions', 'portfolio') }}</h2>
 				</div>
-				<ul class="distinctions">
-					<li class="distinctions__item">
-						<p class="distinctions__item-titre">NOM PRIX</p>
-						<p class="distinctions__item-description">DESCRIPTION</p>
-						<p class="distinctions__item-annee">ANNÉE</p>
-					</li>
-				</ul>
+				{% if post.liste_distinctions %}
+					<ul class="distinctions">
+						{% for distinction in post.meta('liste_distinctions') %}
+							<li class="distinctions__item">
+								<p class="distinctions__item-titre">{{ distinction.nom_prix }}</p>
+								<p class="distinctions__item-description">{{ distinction.description_prix }}</p>
+								<p class="distinctions__item-annee">{{ distinction.annee }}</p>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
 			</div>
 		</div>
 	</div>

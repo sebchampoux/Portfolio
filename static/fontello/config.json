@@ -14,13 +14,13 @@
     },
     {
       "uid": "e9107949dd6c9e8ab2b29ae07156e38c",
-      "css": "linkedin",
+      "css": "linked-in",
       "code": 61665,
       "src": "fontawesome"
     },
     {
       "uid": "47a1f80457068fbeab69fdb83d7d0817",
-      "css": "youtube-play",
+      "css": "youtube",
       "code": 61802,
       "src": "fontawesome"
     },
@@ -70,6 +70,12 @@
       "uid": "d7271d490b71df4311e32cdacae8b331",
       "css": "home",
       "code": 59396,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "54fad985c676a007c79c346ebaec29d6",
+      "css": "deviantart",
+      "code": 61885,
       "src": "fontawesome"
     }
   ]

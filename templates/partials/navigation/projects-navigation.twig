@@ -1,19 +1,22 @@
 <nav class="projects-nav page__projects-nav">
 	<ul class="projects-nav__list">
 		<li class="projects-nav__item">
-			<a href="javascript:;" class="projects-nav__link">
+			{% set prev_link = project.prev.link ?? projets.0.link %}
+			<a href="{{ prev_link }}" class="projects-nav__link">
 				<i class="projects-nav__icon icon-left-open-mini"></i>
 				<span class="projects-nav__label">{{ __('Précédent', 'portfolio') }}</span>
 			</a>
 		</li>
 		<li class="projects-nav__item">
-			<a href="javascript:;" class="projects-nav__link">
+			<a href="{{ site.link }}" class="projects-nav__link">
 				<i class="projects-nav__icon icon-home"></i>
 				<span class="projects-nav__label">{{ __('Accueil', 'portfolio') }}</span>
 			</a>
 		</li>
 		<li class="projects-nav__item">
-			<a href="javascript:;" class="projects-nav__link">
+			{% set last_project = projets|last %}
+			{% set next_link = project.next.link ?? last_project.link %}
+			<a href="{{ next_link }}" class="projects-nav__link">
 				<span class="projects-nav__label">{{ __('Suivant', 'portfolio') }}</span>
 				<i class="projects-nav__icon icon-right-open-mini"></i>
 			</a>

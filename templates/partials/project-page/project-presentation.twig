@@ -2,23 +2,38 @@
 	<div class="container-fluid project__container">
 		<div class="row project__row">
 			<div class="col-xl-5 col-lg-6 project__image-wrapper">
-				<p>hello</p>
-				<img src="" alt="" class="project__img">
+				<img src="{{ project.thumbnail.src }}" alt="{{ project.thumbnail.alt }}" class="project__img">
 			</div>
 			<div class="col-xl-5 col-lg-6">
-				<h1 class="project__title">PROJECT TITLE</h1>
-				<p class="project__contexte-realisation">CONTEXTE RÉALISATION</p>
-				<div class="project__description">TEXTE DE PRÉSENTATION</div>
+				<h1 class="project__title">{{ project.title }}</h1>
+				<p class="project__contexte-realisation">
+					{{ project.contexte_realisation }}{% if project.en_equipe %}{{ __(', en équipe avec') }}{% endif %}
+					{% for coequipier in project.meta('coequipiers') %}
+						{% if coequipier.portfolio_coequipier %}
+							<a href="{{ coequipier.portfolio_coequipier }}">{{ coequipier.nom_coequipier }}</a>{% if loop.revindex == 2 %}{{ __(' et ', 'portfolio') }}{% elseif loop.revindex > 2 %}{{ ', ' }}{% endif %}
+						{% else %}
+							{{ coequipier.nom_coequipier }}{% if loop.revindex == 2 %}{{ __(' et ', 'portfolio') }}{% elseif loop.revindex > 2 %}{{ ', ' }}{% endif %}
+						{% endif %}
+
+					{% endfor %}
+				</p>
+				<div class="project__description">{{ project.content }}</div>
 				<h2 class="project__subtitle">{{ __('Outils utilisés', 'portfolio') }}</h2>
-				<ul class="project__tools">
-					<li>OUTIL</li>
-				</ul>
-				<div class="project__button-wrapper">
-					<a href="javascript:;" target="_blank" class="button">
-						{{ __('Voir le projet', 'portfolio') }}
-						<i class="icon-right-open-mini"></i>
-					</a>
-				</div>
+				{% if project.meta('locigiels_utilises') %}
+					<ul class="project__tools">
+						{% for tool in project.meta('locigiels_utilises') %}
+							<li>{{ tool.nom_logiciel }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				{% if project.lien_vers_projet %}
+					<div class="project__button-wrapper">
+						<a href="{{ project.lien_vers_projet }}" target="_blank" class="button">
+							{{ __('Voir le projet', 'portfolio') }}
+							<i class="icon-right-open-mini"></i>
+						</a>
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>

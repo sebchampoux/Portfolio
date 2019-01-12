@@ -5,10 +5,17 @@
 				<h1 class="galerie-projets__title">{{ __('Mes projets', 'portfolio') }}</h1>
 			</div>
 		</div>
-		<div class="row galerie-projets__row">
-			<div class="col-xl-8 col-lg-10">
-				{% include 'partials/front-page/fiche-projet.twig' %}
+
+		{% for project in projets %}
+			{% set is_odd = loop.index0 % 2 != 0 %}
+			<div class="row galerie-projets__row">
+				<div class="col-xl-8 col-lg-10 {% if is_odd %}offset-xl-4 offset-lg-2{% endif %}">
+					{% include 'partials/front-page/fiche-projet.twig' with {
+						project: project,
+						is_odd: is_odd
+					} %}
+				</div>
 			</div>
-		</div>
+		{% endfor %}
 	</div>
 </section>

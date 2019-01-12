@@ -1,5 +1,5 @@
 .back-to-top {
-	display: flex;
+	display: flex !important;
 	align-items: center;
 	justify-content: center;
 	width: $backToTop-dimensions;
@@ -43,8 +43,6 @@
 	}
 }
 
-
-// Elems
 .back-to-top__icon {
 	color: $color-dark-primary;
 	font-size: $font-size-title-6;
