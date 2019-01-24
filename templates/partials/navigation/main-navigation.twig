@@ -7,7 +7,7 @@
 				<ul class="menu main-nav__menu">
 					{% for menu_item in top_menu.items %}
 						<li class="menu__item {{ menu_item.class }}">
-							<a class="menu__link" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+							<a class="menu__link js-main-nav__link" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
 						</li>
 					{% endfor %}
 				</ul>

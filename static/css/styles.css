@@ -2342,15 +2342,7 @@ a {
       width: 80%; } }
 
 .back-to-top {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: none;
   width: 60px;
   height: 60px;
   background-color: #f2f2f2;
@@ -2381,7 +2373,12 @@ a {
 
 .back-to-top__icon {
   color: #222831;
-  font-size: 1.375rem; }
+  font-size: 1.375rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
 
 .bg-coaster {
   opacity: 0.05; }

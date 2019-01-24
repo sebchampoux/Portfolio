@@ -52,9 +52,9 @@ class Portfolio extends Timber\Site {
 	 * @return array Contexte avec les ajouts dedans
 	 */
 	public function add_to_context( $context ) {
-		$context['header']               = array( 'hero_image' => get_header_image() );
-		$context['top_menu']             = new Timber\Menu( 'top' );
-		$context['social_networks'] = get_field('reseaux_sociaux', 'option');
+		$context['header']          = array( 'hero_image' => get_header_image() );
+		$context['top_menu']        = new Timber\Menu( 'top' );
+		$context['social_networks'] = get_field( 'reseaux_sociaux', 'option' );
 
 		return $context;
 	}
@@ -99,7 +99,12 @@ class Portfolio extends Timber\Site {
 
 		// Scripts
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'portfolio-dist', get_stylesheet_directory_uri() . '/static/js/dist/build.js', 'jquery', '2.0.0', false );
+		wp_enqueue_script( 'gsap-tweenmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.0/TweenMax.min.js' );
+		wp_enqueue_script( 'gsap-scrollto', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/ScrollToPlugin.min.js' );
+		wp_enqueue_script( 'portfolio-dist', get_stylesheet_directory_uri() . '/static/js/dist/build.js', array(
+			'jquery',
+			'gsap-tweenmax'
+		), '2.0.0', false );
 	}
 
 	/**

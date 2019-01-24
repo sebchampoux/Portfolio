@@ -1,7 +1,6 @@
 .back-to-top {
-	display: flex !important;
-	align-items: center;
-	justify-content: center;
+	display: none;
+	
 	width: $backToTop-dimensions;
 	height: $backToTop-dimensions;
 
@@ -46,4 +45,9 @@
 .back-to-top__icon {
 	color: $color-dark-primary;
 	font-size: $font-size-title-6;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }

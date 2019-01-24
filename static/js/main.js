@@ -1,5 +1,6 @@
 import Menu from './src/Menu';
 import ScrollToTop from './src/ScrollToTop';
+import HeroArea from './src/HeroArea';
 
 jQuery(document).ready($ => {
 	const win = $(window);
@@ -7,6 +8,7 @@ jQuery(document).ready($ => {
 	// Initialisation des éléments
 	Menu.init();
 	ScrollToTop.init();
+	HeroArea.init();
 
 	// Évènements scroll
 	win.on('scroll', e => {

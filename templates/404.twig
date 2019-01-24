@@ -1,1 +1,14 @@
-{% extends '' %}
+{% extends 'base.twig' %}
+
+{% block content %}
+	<div class="container">
+		<div class="text-box text-box--bg--darker text-box--content-centered">
+			<h1 class="text-box__title">{{ __('Oups !', 'portfolio') }}</h1>
+			<p class="text-box__text">{{ __('La page que vous recherchez n\'existe pas.', 'portfolio') }}</p>
+			<a href="{{ site.link }}" class="button">
+				<i class="button__icon icon-home"></i>
+				{{ __('Retour à l\'accueil', 'portfolio') }}
+			</a>
+		</div>
+	</div>
+{% endblock %}
