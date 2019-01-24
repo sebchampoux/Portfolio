@@ -3136,7 +3136,8 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  list-style-type: none; }
+  list-style-type: none;
+  position: relative; }
 
 .reseaux-sociaux--icons-centered {
   -webkit-box-pack: center;

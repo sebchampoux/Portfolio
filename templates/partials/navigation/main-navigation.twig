@@ -1,8 +1,7 @@
 <nav class="main-nav js-main-nav page__main-nav">
 	<div class="container-fluid main-nav__container">
-
 		{# Main menu #}
-		<div class="main-nav__menu-wrapper">
+		<div class="main-nav__menu-wrapper js-main-nav__menu-wrapper">
 			{% if top_menu.items %}
 				<ul class="menu main-nav__menu">
 					{% for menu_item in top_menu.items %}
@@ -15,7 +14,7 @@
 
 			{# Réseaux sociaux #}
 			{% include 'partials/misc/social-networks.twig' with {
-				'list_class': 'main-nav__reseaux-sociaux',
+				'list_class': 'main-nav__reseaux-sociaux js-main-nav__reseaux-sociaux',
 				'links_class': 'reseaux-sociaux__link--size--small'
 			} %}
 		</div>
