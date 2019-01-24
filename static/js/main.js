@@ -19,6 +19,7 @@ jQuery(document).ready($ => {
 
 	// Évènements resize
 	win.on('resize', e => {
-
+		const width = e.currentTarget.innerWidth;
+		Menu.onPageResize(width);
 	});
 });

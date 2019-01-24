@@ -38,7 +38,6 @@ class Portfolio extends Timber\Site {
 		add_action( 'admin_head', array( $this, 'fix_svg' ) );
 		add_action( 'login_enqueue_scripts', array( $this, 'login_custom_css' ) );
 		add_action( 'login_headerurl', array( $this, 'login_headerurl' ) );
-		$this->acf_options_page();
 		$this->load_dependencies();
 
 		parent::__construct();
@@ -54,7 +53,7 @@ class Portfolio extends Timber\Site {
 	public function add_to_context( $context ) {
 		$context['header']          = array( 'hero_image' => get_header_image() );
 		$context['top_menu']        = new Timber\Menu( 'top' );
-		$context['social_networks'] = get_field( 'reseaux_sociaux', 'option' );
+		$context['social_networks'] = new Timber\Menu( 'socials' );
 
 		return $context;
 	}
@@ -118,29 +117,9 @@ class Portfolio extends Timber\Site {
 
 		// Menu
 		register_nav_menus( array(
-			'top' => 'Menu du haut'
+			'top'     => 'Menu du haut',
+			'socials' => 'Réseaux sociaux'
 		) );
-	}
-
-	/**
-	 * Pages de paramètres ACF globaux
-	 */
-	public function acf_options_page() {
-		if ( function_exists( 'acf_add_options_page' ) ) {
-			acf_add_options_page( array(
-				'page_title' => 'Options générales du thème',
-				'menu_title' => 'Options du thème',
-				'menu_slug'  => 'theme-general-settings',
-				'capability' => 'edit_posts',
-				'redirect'   => false
-			) );
-
-			acf_add_options_sub_page( array(
-				'page_title'  => 'Liens des réseaux sociaux',
-				'menu_title'  => 'Réseaux sociaux',
-				'parent_slug' => 'theme-general-settings'
-			) );
-		}
 	}
 
 	/**

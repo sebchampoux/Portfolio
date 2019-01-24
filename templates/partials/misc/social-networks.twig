@@ -4,13 +4,13 @@ Paramètres additionnels possibles (à passer dans le include) :
 - links_class   => Classe(s) supplémentaires à ajouter à reseaux-sociaux__link
 #}
 
-{% if social_networks %}
+{% if social_networks.items %}
 	<ul class="reseaux-sociaux {{ list_class }}">
-		{% for soc_net in social_networks %}
-			<li class="reseaux-sociaux__item">
-				<a href="{{ soc_net.lien }}" target="_blank" rel="noopener" title="{{ soc_net.nom_reseau }}"
-				   class="reseaux-sociaux__link reseaux-sociaux__link--{{ soc_net.slug }} {{ links_class }}">
-					<i class="reseaux-sociaux__icon icon-{{ soc_net.slug }}"></i>
+		{% for item in social_networks.items %}
+			<li class="reseaux-sociaux__item {{ item.classes|join(' ') }}">
+				<a href="{{ item.link }}" target="_blank" rel="noopener" title="{{ item.title }}"
+				   class="reseaux-sociaux__link reseaux-sociaux__link--{{ item.slug }} {{ links_class }}">
+					<i class="reseaux-sociaux__icon icon-{{ item.slug }}"></i>
 				</a>
 			</li>
 		{% endfor %}

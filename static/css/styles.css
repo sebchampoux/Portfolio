@@ -2907,7 +2907,7 @@ a {
       height: 100vh;
       position: fixed;
       top: 0;
-      right: 0; } }
+      right: -100%; } }
 
 .menu {
   display: -webkit-box;

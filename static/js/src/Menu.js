@@ -61,10 +61,10 @@ export default {
 			paused: true
 		});
 		this.openingAnim.add(
-			TweenMax.from(
+			TweenMax.to(
 				this.menuWrapper,
 				0.7,
-				{right: '-100%'}
+				{right: '0'}
 			)
 		);
 		this.openingAnim.add(
@@ -92,7 +92,7 @@ export default {
 		this.closeAnim.add(
 			TweenMax.to(
 				this.menuWrapper,
-				0.5,
+				0.7,
 				{right: '-100%'}
 			)
 		);
@@ -117,7 +117,16 @@ export default {
 	 * @param innerWidth {Number} - Largeur interne de la fenêtre
 	 */
 	onPageResize(innerWidth) {
+		if(innerWidth >= this.mobileBP) {
+			this.resetMenu();
+		}
+	},
 
+	/**
+	 * Remet le menu à zéro
+	 */
+	resetMenu() {
+		this.links.each((i, e) => $(e).attr({'style': ''}));
 	},
 
 	/**
