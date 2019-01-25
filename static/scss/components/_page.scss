@@ -2,19 +2,3 @@
 	background-color: $color-neutral-primary;
 	min-height: 100vh;
 }
-
-// Elems
-.page__content {
-	position: relative;
-	left: 0;
-	top: 0;
-	z-index: zindexes(pageContent);
-
-	transition: 0.4s all ease-out;
-
-	background-color: $color-neutral-primary;
-}
-
-.page__content--tossed-aside {
-	left: -$contactForm-width;
-}

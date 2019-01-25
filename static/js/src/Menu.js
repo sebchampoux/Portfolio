@@ -29,14 +29,23 @@ export default {
 		// Récupère la hauteur de la navigation principale
 		this.mainNavHeight = this.mainNav.height();
 
+		// Page scrollée à l'ouverture ?
+		if (window.scrollY >= this.shadow.apparitionPoint) {
+			this.toggleMenuShadow(true);
+		}
+
+		// Menu mobile dès l'ouverture ?
+		if (window.innerWidth <= this.mobileBP) {
+			this.createMenuAnimations();
+		}
+
 		// Events
 		this.hamburger.on('click', this.toggleHamburger.bind(this));
 
-		// SmoothScroll pour les liens où c'est nécessaire
+		// SmoothScroll pour les ancres
 		this.links.each((i, e) => {
 			const currentLink = $(e);
 			const currentLinkDest = currentLink.attr('href');
-
 			if (currentLinkDest[0] === '#') {
 				currentLink.on('click', e => {
 					e.preventDefault();
@@ -44,18 +53,23 @@ export default {
 						currentLinkDest,
 						this.mainNavHeight
 					);
+
+					// Si mobile, on ferme le menu après un clic
+					if(window.innerWidth <= this.mobileBP) {
+						this.toggleHamburger();
+					}
 				});
 			}
 		});
-
-		// Création des animations
-		this.createMenuAnimations();
 	},
 
 	/**
 	 * Création des animations ouverture/fermeture du menu (on veut juste le faire une fois...)
 	 */
 	createMenuAnimations() {
+		// Si les animations ont déjà été créées, on veut pas les refaire
+		if(this.openingAnim !== undefined && this.closeAnim !== undefined) return;
+
 		// Ouverture
 		this.openingAnim = new TimelineMax({
 			paused: true
@@ -104,9 +118,21 @@ export default {
 	 */
 	onPageScroll(scrollY) {
 		if (scrollY >= this.shadow.apparitionPoint && !this.shadow.isVisible) {
+			this.toggleMenuShadow(true);
+		} else if (scrollY <= this.shadow.apparitionPoint && this.shadow.isVisible) {
+			this.toggleMenuShadow(false);
+		}
+	},
+
+	/**
+	 * Cache ou ferme l'ombre du menu
+	 * @param show {Boolean} - Rendre visible ou cacher l'ombre
+	 */
+	toggleMenuShadow(show = false) {
+		if (show) {
 			this.shadow.isVisible = true;
 			this.mainNav.addClass(this.shadow.shadowClass);
-		} else if (scrollY <= this.shadow.apparitionPoint && this.shadow.isVisible) {
+		} else {
 			this.shadow.isVisible = false;
 			this.mainNav.removeClass(this.shadow.shadowClass);
 		}
@@ -117,13 +143,15 @@ export default {
 	 * @param innerWidth {Number} - Largeur interne de la fenêtre
 	 */
 	onPageResize(innerWidth) {
-		if(innerWidth >= this.mobileBP) {
+		if (innerWidth >= this.mobileBP) {
 			this.resetMenu();
+		} else {
+			this.createMenuAnimations();
 		}
 	},
 
 	/**
-	 * Remet le menu à zéro
+	 * Remet le menu à zéro lors du retour au desktop
 	 */
 	resetMenu() {
 		this.links.each((i, e) => $(e).attr({'style': ''}));
@@ -137,10 +165,10 @@ export default {
 		this.hamburger.toggleClass(this.hamburgerOpenClass);
 
 		// Menu hamburger
-		if(!this.isMenuOpen) {
+		if (!this.isMenuOpen) {
 			this.openingAnim.play(0);
 		} else {
-			if(this.openingAnim.isActive()) {
+			if (this.openingAnim.isActive()) {
 				this.openingAnim.pause();
 			}
 			this.closeAnim.play(0);

@@ -55,6 +55,11 @@ class Portfolio extends Timber\Site {
 		$context['top_menu']        = new Timber\Menu( 'top' );
 		$context['social_networks'] = new Timber\Menu( 'socials' );
 
+		// Je veux que toutes les pages aient la classe page
+		if ( ! strpos( $context['body_class'], 'page' ) ) {
+			$context['body_class'] .= ' page';
+		}
+
 		return $context;
 	}
 
