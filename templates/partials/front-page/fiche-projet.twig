@@ -1,5 +1,5 @@
 <article class="fiche-projet {% if is_odd %}fiche-projet--layout--inverted{% endif %}">
-	<img src="{{ project.thumbnail.src }}" alt="{{ project.thumbnail.alt }}" class="fiche-projet__img">
+	<img src="{{ project.thumbnail.src('projet-galerie') }}" alt="{{ project.thumbnail.alt }}" class="fiche-projet__img">
 	<div class="text-box text-box--padd--sm text-box--bg--darker fiche-projet__text-box">
 		<h2 class="text-box__title text-box__title--boxed-top">{{ project.title }}</h2>
 		<div class="text-box__text">{{ project.post_excerpt }}</div>

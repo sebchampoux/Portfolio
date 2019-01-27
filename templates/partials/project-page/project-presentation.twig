@@ -1,20 +1,19 @@
 <section class="project">
 	<div class="container-fluid project__container">
 		<div class="row project__row">
-			<div class="col-xl-5 col-lg-6 project__image-wrapper">
-				<img src="{{ project.thumbnail.src }}" alt="{{ project.thumbnail.alt }}" class="project__img">
+			<div class="col-xl-5 col-lg-6">
+				<img src="{{ project.thumbnail.src('projet-single') }}" alt="{{ project.thumbnail.alt }}" class="project__img">
 			</div>
 			<div class="col-xl-5 col-lg-6">
 				<h1 class="project__title">{{ project.title }}</h1>
 				<p class="project__contexte-realisation">
-					{{ project.contexte_realisation }}{% if project.en_equipe %}{{ __(', en équipe avec') }}{% endif %}
+					{{ project.contexte_realisation }}{% if project.en_equipe %}{{ __(', réalisé avec', 'portfolio') }}{% endif %}
 					{% for coequipier in project.meta('coequipiers') %}
 						{% if coequipier.portfolio_coequipier %}
 							<a href="{{ coequipier.portfolio_coequipier }}">{{ coequipier.nom_coequipier }}</a>{% if loop.revindex == 2 %}{{ __(' et ', 'portfolio') }}{% elseif loop.revindex > 2 %}{{ ', ' }}{% endif %}
 						{% else %}
 							{{ coequipier.nom_coequipier }}{% if loop.revindex == 2 %}{{ __(' et ', 'portfolio') }}{% elseif loop.revindex > 2 %}{{ ', ' }}{% endif %}
 						{% endif %}
-
 					{% endfor %}
 				</p>
 				<div class="project__description">{{ project.content }}</div>

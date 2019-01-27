@@ -1,9 +1,13 @@
+import objectFitImages from 'object-fit-images';
+
 import Menu from './src/Menu';
 import ScrollToTop from './src/ScrollToTop';
 import HeroArea from './src/HeroArea';
 
 jQuery(document).ready($ => {
 	const win = $(window);
+
+	objectFitImages();
 
 	// Initialisation des éléments
 	Menu.init();

@@ -1,5 +1,6 @@
 @include at-least(bp($ficheProjet-mobileBP)) {
 	.fiche-projet__text-box {
+		max-width: 55%;
 		bottom: -5px;
 		right: -35px;
 	}
@@ -16,6 +17,7 @@
 @include at-most(bp($ficheProjet-mobileBP)) {
 	.fiche-projet__text-box {
 		width: 100%;
+		max-width: none;
 
 		&::after {
 			content: none;

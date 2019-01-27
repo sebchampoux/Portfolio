@@ -1,16 +1,16 @@
 
 const path = require('path');
-const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-3-webpack-plugin');
 
 module.exports = {
 	entry: [
 		/*'babel-polyfill',/**/
-		'./static/js/main.js',
-		'./static/scss/main.scss'
+		'./src/js/main.js',
+		'./src/scss/main.scss'
 	],
 	output: {
 		path: path.resolve(__dirname, 'static'),
-		filename: 'js/dist/build.js'
+		filename: 'js/build.js'
 	},
 	module: {
 		rules: [
@@ -54,7 +54,7 @@ module.exports = {
 		overlay: true,
 		port: 8081
 	},
-	// plugins: [
-	// 	new uglifyJsPlugin()
-	// ]
+	plugins: [
+		new UglifyJsPlugin()
+	]
 };
