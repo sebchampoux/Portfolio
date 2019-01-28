@@ -126,6 +126,13 @@ class Portfolio extends Timber\Site {
 			'top'     => 'Menu du haut',
 			'socials' => 'Réseaux sociaux'
 		) );
+
+		// En-tête
+		add_theme_support( 'custom-header', array(
+			'width'       => 960,
+			'height'      => 940,
+			'header-text' => false
+		) );
 	}
 
 	/**
