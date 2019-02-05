@@ -133,6 +133,9 @@ class Portfolio extends Timber\Site {
 			'height'      => 940,
 			'header-text' => false
 		) );
+
+		// Text domain
+		load_theme_textdomain('portfolio', get_template_directory() . '/languages' );
 	}
 
 	/**
@@ -191,7 +194,7 @@ class Portfolio extends Timber\Site {
 	 * CSS personnalisé pour la page de login
 	 */
 	public function login_custom_css() {
-		wp_enqueue_style( 'main-stylesheet', get_stylesheet_directory_uri() . '/static/css/login-screen.css' );
+		wp_enqueue_style( 'login-stylesheet', get_stylesheet_directory_uri() . '/static/css/login-screen.css' );
 	}
 
 	/**
