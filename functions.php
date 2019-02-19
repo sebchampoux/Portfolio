@@ -54,6 +54,7 @@ class Portfolio extends Timber\Site {
 		$context['header']          = array( 'hero_image' => get_header_image() );
 		$context['top_menu']        = new Timber\Menu( 'top' );
 		$context['social_networks'] = new Timber\Menu( 'socials' );
+		$context['languages']       = apply_filters( 'wpml_active_languages', null, 'orderby=id&order=desc' );
 
 		// Je veux que toutes les pages aient la classe page
 		if ( ! strpos( $context['body_class'], 'page' ) ) {
@@ -135,7 +136,7 @@ class Portfolio extends Timber\Site {
 		) );
 
 		// Text domain
-		load_theme_textdomain('portfolio', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'portfolio', get_template_directory() . '/languages' );
 	}
 
 	/**

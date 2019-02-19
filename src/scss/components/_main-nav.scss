@@ -2,9 +2,10 @@
 	height: $nav-height;
 	transition: 0.2s all ease-out;
 	position: relative;
+	background-color: $nav-bgcolor;
 
-	@include at-most(bp(xl)) {
-		background-color: $nav-bgcolor;
+	@include at-most(bp($nav-mobileBP)) {
+		width: 70px;
 	}
 }
 

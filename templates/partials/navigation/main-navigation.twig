@@ -4,11 +4,21 @@
 		<div class="main-nav__menu-wrapper js-main-nav__menu-wrapper">
 			{% if top_menu.items %}
 				<ul class="menu main-nav__menu">
+					{# Items du menu #}
 					{% for menu_item in top_menu.items %}
 						<li class="menu__item {{ menu_item.classes|join(' ') }}">
 							<a class="menu__link js-main-nav__link" href="{{ menu_item.link }}">{{ menu_item.title }}</a>
 						</li>
 					{% endfor %}
+
+					{# Langues #}
+					{% if languages %}
+						{% for lang in languages if lang.active == 0 %}
+							<li class="menu__item">
+								<a class="menu__link menu__link--lang js-main-nav__link" href="{{ lang.url }}">{{ lang.native_name }}</a>
+							</li>
+						{% endfor %}
+					{% endif %}
 				</ul>
 			{% endif %}
 
