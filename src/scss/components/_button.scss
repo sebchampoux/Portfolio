@@ -46,6 +46,11 @@
 	&:active {
 		background-color: darken($color-accent-primary, 5%);
 	}
+
+	@include at-most(bp(sm)) {
+		padding: 20px 35px;
+		font-size: calculateRem(18px);
+	}
 }
 
 .button--size--full {

@@ -26,4 +26,8 @@
 	@include at-most(bp(lg)) {
 		font-size: $font-size-title-3;
 	}
+
+	@include at-most(bp(sm)) {
+		font-size: $font-size-title-4;
+	}
 }
