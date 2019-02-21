@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: Portfolio\n"
 "POT-Creation-Date: 2019-02-05 18:35-0500\n"
-"PO-Revision-Date: 2019-02-19 10:30-0500\n"
+"PO-Revision-Date: 2019-02-21 17:58-0500\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,7 @@ msgstr "Honors"
 
 #: templates/partials/front-page/cv-contact.twig:6
 msgid "Mon CV"
-msgstr "My CV"
+msgstr "My resume"
 
 #: templates/partials/front-page/fiche-projet.twig:8
 msgid "Plus d'infos"
