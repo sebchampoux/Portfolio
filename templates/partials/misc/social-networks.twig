@@ -9,8 +9,8 @@ Paramètres additionnels possibles (à passer dans le include) :
 		{% for item in social_networks.items %}
 			<li class="reseaux-sociaux__item {{ item.classes|join(' ') }}">
 				<a href="{{ item.link }}" target="_blank" rel="noopener" title="{{ item.title }}"
-				   class="reseaux-sociaux__link reseaux-sociaux__link--{{ item.slug }} {{ links_class }}">
-					<i class="reseaux-sociaux__icon icon-{{ item.slug }}"></i>
+				   class="reseaux-sociaux__link reseaux-sociaux__link--{{ item.html_class }} {{ links_class }}">
+					<i class="reseaux-sociaux__icon icon-{{ item.html_class }}"></i>
 				</a>
 			</li>
 		{% endfor %}
