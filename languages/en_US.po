@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: Portfolio\n"
 "POT-Creation-Date: 2019-02-05 18:35-0500\n"
-"PO-Revision-Date: 2019-02-21 17:58-0500\n"
+"PO-Revision-Date: 2019-02-26 20:01-0500\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "Next"
 
 #: templates/partials/project-page/project-presentation.twig:10
 msgid ", réalisé avec"
-msgstr ", realised with"
+msgstr ", produced with"
 
 #: templates/partials/project-page/project-presentation.twig:13
 #: templates/partials/project-page/project-presentation.twig:15
