@@ -25,6 +25,7 @@ Timber::$dirname = array(
 class Portfolio extends Timber\Site {
 
 	private $_svg_fixer;
+	private $_admin_styles;
 
 	/**
 	 * Portfolio constructor.
@@ -55,8 +56,8 @@ class Portfolio extends Timber\Site {
 		add_action( 'init', array( $this, 'register_cpt' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_setup' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_theme_scripts' ) );
-		add_action( 'login_enqueue_scripts', array( $this, 'login_custom_css' ) );
-		add_action( 'login_headerurl', array( $this, 'login_headerurl' ) );
+		add_action( 'login_enqueue_scripts', array( $this->_admin_styles, 'login_custom_css' ) );
+		add_action( 'login_headerurl', array( $this->_admin_styles, 'login_headerurl' ) );
 		add_action( 'admin_head', array( $this->_svg_fixer, 'fix_svg' ) );
 	}
 
@@ -65,6 +66,7 @@ class Portfolio extends Timber\Site {
 	 */
 	public function load_dependencies() {
 		require_once get_template_directory() . '/inc/Portfolio_SVG_Fixer.php';
+		require_once get_template_directory() . '/inc/Portfolio_Admin_Styles.php';
 	}
 
 	/**
@@ -72,6 +74,7 @@ class Portfolio extends Timber\Site {
 	 */
 	public function instantiate_dependencies() {
 		$this->_svg_fixer = new Portfolio_SVG_Fixer();
+		$this->_admin_styles = new Portfolio_Admin_Styles();
 	}
 
 	/**
@@ -168,26 +171,6 @@ class Portfolio extends Timber\Site {
 
 		// Text domain
 		load_theme_textdomain( 'portfolio', get_template_directory() . '/languages' );
-	}
-
-	/**
-	 * CSS personnalisé pour la page de login
-	 */
-	public function login_custom_css() {
-		wp_enqueue_style( 'login-stylesheet', get_stylesheet_directory_uri() . '/static/css/login-screen.css' );
-	}
-
-	/**
-	 * Modifie le URL du logo de la page login
-	 *
-	 * @param $url string URL original
-	 *
-	 * @return string url modifié
-	 */
-	public function login_headerurl( $url ) {
-		$url = get_home_url();
-
-		return $url;
 	}
 }
 
