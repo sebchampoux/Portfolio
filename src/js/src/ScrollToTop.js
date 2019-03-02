@@ -38,7 +38,10 @@ export default {
 	 * @param scrollY {Number} - valeur de ScrollY
 	 */
 	onPageScroll(scrollY) {
-		if(scrollY >= this.apparitionPoint && !this.isVisible) {
+		let isPastApparitionPoint = scrollY >= this.apparitionPoint;
+		let notPastApparitionPoint = scrollY <= this.apparitionPoint;
+
+		if (isPastApparitionPoint && !this.isVisible) {
 			// Apparition
 			this.isVisible = true;
 			TweenMax.to(
@@ -46,7 +49,7 @@ export default {
 				this.transitionSpeed,
 				this.visibleState
 			);
-		} else if(scrollY <= this.apparitionPoint && this.isVisible) {
+		} else if (notPastApparitionPoint && this.isVisible) {
 			// Disparition
 			this.isVisible = false;
 			TweenMax.to(

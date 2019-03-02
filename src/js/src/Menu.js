@@ -21,7 +21,7 @@ export default {
 	init() {
 		// DOM elements
 		this.mainNav = $('.js-main-nav');
-		this.menuWrapper = $('.js-main-nav__menu-wrapper')
+		this.menuWrapper = $('.js-main-nav__menu-wrapper');
 		this.hamburger = $('.js-hamburger');
 		this.links = $('.js-main-nav__link');
 		this.socialNetworks = $('.js-main-nav__reseaux-sociaux');

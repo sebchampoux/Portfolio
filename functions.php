@@ -28,19 +28,31 @@ class Portfolio extends Timber\Site {
 	 * Portfolio constructor.
 	 */
 	function __construct() {
+		parent::__construct();
+
+		$this->register_filters();
+		$this->register_actions();
+	}
+
+	/**
+	 * Enregistre les filtres
+	 */
+	public function register_filters() {
 		add_filter( 'wp_check_filetype_and_ext', array( $this, 'allow_svg' ), 10, 4 );
 		add_filter( 'upload_mimes', array( $this, 'cc_mime_types' ) );
 		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
+	}
 
+	/**
+	 * Enregistre les actions
+	 */
+	public function register_actions() {
 		add_action( 'init', array( $this, 'register_cpt' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_setup' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_theme_scripts' ) );
 		add_action( 'admin_head', array( $this, 'fix_svg' ) );
 		add_action( 'login_enqueue_scripts', array( $this, 'login_custom_css' ) );
 		add_action( 'login_headerurl', array( $this, 'login_headerurl' ) );
-		$this->load_dependencies();
-
-		parent::__construct();
 	}
 
 	/**
