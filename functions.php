@@ -24,11 +24,16 @@ Timber::$dirname = array(
  */
 class Portfolio extends Timber\Site {
 
+	private $_svg_fixer;
+
 	/**
 	 * Portfolio constructor.
 	 */
 	function __construct() {
 		parent::__construct();
+
+		$this->load_dependencies();
+		$this->instantiate_dependencies();
 
 		$this->register_filters();
 		$this->register_actions();
@@ -38,8 +43,8 @@ class Portfolio extends Timber\Site {
 	 * Enregistre les filtres
 	 */
 	public function register_filters() {
-		add_filter( 'wp_check_filetype_and_ext', array( $this, 'allow_svg' ), 10, 4 );
-		add_filter( 'upload_mimes', array( $this, 'cc_mime_types' ) );
+		add_filter( 'wp_check_filetype_and_ext', array( $this->_svg_fixer, 'allow_svg' ), 10, 4 );
+		add_filter( 'upload_mimes', array( $this->_svg_fixer, 'cc_mime_types' ) );
 		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
 	}
 
@@ -50,9 +55,23 @@ class Portfolio extends Timber\Site {
 		add_action( 'init', array( $this, 'register_cpt' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_setup' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_theme_scripts' ) );
-		add_action( 'admin_head', array( $this, 'fix_svg' ) );
 		add_action( 'login_enqueue_scripts', array( $this, 'login_custom_css' ) );
 		add_action( 'login_headerurl', array( $this, 'login_headerurl' ) );
+		add_action( 'admin_head', array( $this->_svg_fixer, 'fix_svg' ) );
+	}
+
+	/**
+	 * Charge les autres classes dont celle-ci est dépendante
+	 */
+	public function load_dependencies() {
+		require_once get_template_directory() . '/inc/Portfolio_SVG_Fixer.php';
+	}
+
+	/**
+	 * Instancie les autres classes dont celle-ci dépend
+	 */
+	public function instantiate_dependencies() {
+		$this->_svg_fixer = new Portfolio_SVG_Fixer();
 	}
 
 	/**
@@ -149,58 +168,6 @@ class Portfolio extends Timber\Site {
 
 		// Text domain
 		load_theme_textdomain( 'portfolio', get_template_directory() . '/languages' );
-	}
-
-	/**
-	 * Pour permettre le support de SVG, provient de CSS Tricks
-	 *
-	 * @param $data
-	 * @param $file
-	 * @param $filename
-	 * @param $mimes
-	 *
-	 * @return array
-	 */
-	public function allow_svg( $data, $file, $filename, $mimes ) {
-		global $wp_version;
-		if ( $wp_version !== '4.7.1' ) {
-			return $data;
-		}
-
-		$filetype = wp_check_filetype( $filename, $mimes );
-
-		return array(
-			'ext'             => $filetype['ext'],
-			'type'            => $filetype['type'],
-			'proper_filename' => $data['proper_filename']
-		);
-	}
-
-	/**
-	 * Aussi pour permettre le support de SVG
-	 *
-	 * @param $mimes
-	 *
-	 * @return mixed
-	 */
-	public function cc_mime_types( $mimes ) {
-		$mimes['svg'] = 'image/svg+xml';
-
-		return $mimes;
-	}
-
-	/**
-	 * Aussi pour les SVG
-	 */
-	public function fix_svg() {
-		?>
-		<style type="text/css">
-			.attachment-266x266, .thumbnail img {
-				width: 100% !important;
-				height: auto !important;
-			}
-		</style>
-		<?php
 	}
 
 	/**
