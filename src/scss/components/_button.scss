@@ -1,20 +1,35 @@
+/**
+ * Bouton de base, pas vraiment fait pour être utilisé tel quel (ajouter des modifiers)
+ */
 .button {
 	border: none;
 	display: inline-block;
-	padding: 25px 55px;
-	background-color: $color-accent-primary;
+	padding: 20px 30px;
+	position: relative;
 
 	text-align: center;
-	color: $color-light-primary;
 	font-size: calculateRem(24px);
 	letter-spacing: 3px;
 	font-weight: $font-weight-light;
 	text-transform: uppercase;
 	text-decoration: none;
 
-	position: relative;
-
 	transition: 50ms all ease-out;
+
+	&:hover {
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	@include at-most(bp(sm)) {
+		font-size: calculateRem(18px);
+	}
+}
+
+.button--primary {
+	background-color: $color-accent-primary;
+	color: $color-light-primary;
+	padding: 25px 55px;
 
 	&::after {
 		content: '';
@@ -34,8 +49,6 @@
 
 	&:hover {
 		color: $color-light-primary;
-		text-decoration: none;
-		cursor: pointer;
 
 		&::after {
 			top: 0;
@@ -49,30 +62,12 @@
 
 	@include at-most(bp(sm)) {
 		padding: 20px 35px;
-		font-size: calculateRem(18px);
-	}
-}
-
-.button--size--full {
-	width: 100%;
-	padding: 25px 0;
-}
-
-.button--size-small {
-	font-size: calculateRem(18px);
-	padding: 15px 30px;
-
-	&::after {
-		top: -3px;
-		left: -3px;
 	}
 }
 
 .button--link {
-	background-color: transparent;
 	padding: 10px 0;
 
-	color: $color-accent-primary;
 	font-weight: $font-weight-normal;
 	font-family: $font-family-title-primary;
 	letter-spacing: normal;
@@ -85,10 +80,12 @@
 		background-color: transparent;
 		color: darken($color-accent-primary, 10%);
 	}
+}
 
-	&::after {
-		content: none;
-	}
+.button--size--full {
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .button__icon {
