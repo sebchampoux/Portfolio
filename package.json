@@ -10,7 +10,9 @@
 		"build-w": "webpack --watch"
 	},
 	"dependencies": {
-		"object-fit-images": "^3.2.3"
+		"gsap": "^2.1.2",
+		"object-fit-images": "^3.2.3",
+		"waypoints": "^4.0.1"
 	},
 	"browserslist": [
 		"> 1%",
