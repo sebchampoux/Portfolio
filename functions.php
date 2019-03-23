@@ -73,7 +73,7 @@ class Portfolio extends Timber\Site {
 	 * Instancie les autres classes dont celle-ci dépend
 	 */
 	public function instantiate_dependencies() {
-		$this->_svg_fixer = new Portfolio_SVG_Fixer();
+		$this->_svg_fixer    = new Portfolio_SVG_Fixer();
 		$this->_admin_styles = new Portfolio_Admin_Styles();
 	}
 

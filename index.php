@@ -6,5 +6,6 @@
  * Time: 19:22
  */
 
-$context = Timber::get_context();
+$context             = Timber::get_context();
+$context['template'] = 'index';
 Timber::render( array( 'index.twig', 'base.twig' ), $context );

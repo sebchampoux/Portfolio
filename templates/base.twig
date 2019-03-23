@@ -5,18 +5,20 @@
 	</head>
 {% endblock %}
 
-<body class="{{ body_class }}" data-template="base.twig">
-{% block navigation %}
-{% endblock %}
+<body class="{{ body_class }}" data-barba="wrapper">
+<div class="page__content" data-barba="container" {% if template %}data-barba-namespace="{{ template }}"{% endif %}>
+	{% block navigation %}
+	{% endblock %}
 
-{% block header %}
-{% endblock %}
+	{% block header %}
+	{% endblock %}
 
-{% block content %}
-{% endblock content %}
+	{% block content %}
+	{% endblock content %}
 
-{% block footer %}
-{% endblock %}
+	{% block footer %}
+	{% endblock %}
+</div>
 {{ function('wp_footer') }}
 </body>
 </html>

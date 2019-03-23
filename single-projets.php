@@ -6,12 +6,7 @@
  * Time: 18:37
  */
 
-$context            = Timber::get_context();
-$context['project'] = new Timber\Post();
-$context['projets'] = Timber::get_posts( array(
-	'post_type' => 'projets',
-	'orderby'   => 'date',
-	'order'     => 'DESC',
-	'status'    => 'publish'
-) );
+$context             = Timber::get_context();
+$context['template'] = 'single-projet';
+$context['project']  = new Timber\Post();
 Timber::render( array( 'single-projets.twig', 'index.twig' ), $context );

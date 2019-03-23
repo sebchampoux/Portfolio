@@ -6,9 +6,10 @@
  * Time: 18:37
  */
 
-$context            = Timber::get_context();
-$context['post']    = new Timber\Post();
-$context['projets'] = Timber::get_posts( array(
+$context             = Timber::get_context();
+$context['template'] = 'front-page';
+$context['post']     = new Timber\Post();
+$context['projets']  = Timber::get_posts( array(
 	'post_type' => 'projets',
 	'orderby'   => 'date',
 	'order'     => 'DESC',
