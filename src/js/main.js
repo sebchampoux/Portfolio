@@ -2,7 +2,7 @@ import objectFitImages from 'object-fit-images';
 
 import Menu from './src/Menu';
 import ScrollToTop from './src/ScrollToTop';
-import HeroArea from './src/HeroArea';
+import { HeroArea } from './src/HeroArea';
 import { PageTransitions } from "./src/PageTransitions";
 
 jQuery(document).ready($ => {
@@ -13,8 +13,8 @@ jQuery(document).ready($ => {
 	// Initialisation des éléments
 	Menu.init();
 	ScrollToTop.init();
-	HeroArea.init();
-	const pageTransitions = new PageTransitions();
+	const heroArea = new HeroArea();
+	// const pageTransitions = new PageTransitions();
 
 	// Évènements scroll
 	win.on('scroll', e => {

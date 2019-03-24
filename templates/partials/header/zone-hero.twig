@@ -1,10 +1,10 @@
-<header class="hero-area">
+<header class="hero-area js-hero-area">
 	{% set hero_img = header.hero_image ?: theme.path ~ '/static/imgs/hero-area__feat-img.jpg' %}
-	<img src="{{ hero_img }}" alt="Leviathan @ Canada's Wonderland" class="hero-area__feat-img">
+	<img src="{{ hero_img }}" alt="Leviathan @ Canada's Wonderland" class="hero-area__feat-img js-hero-area__feat-img">
 	<div class="container hero-area__container">
 		<div class="row hero-area__row">
 			<div class="col-md-8 col-sm-10">
-				<div class="text-box text-box--content-centered hero-area__text-box">
+				<div class="text-box text-box--content-centered hero-area__text-box js-hero-area__text-box">
 					<h1 class="text-box__title">{{ site.title }}</h1>
 					<div class="text-box__separation"></div>
 					<h2 class="text-box__subtitle">{{ site.description }}</h2>

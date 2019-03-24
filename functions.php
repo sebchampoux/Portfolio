@@ -138,7 +138,7 @@ class Portfolio extends Timber\Site {
 
 		// Scripts
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'gsap-tweenmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.0/TweenMax.min.js' );
+		wp_enqueue_script( 'gsap-tweenmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js' );
 		wp_enqueue_script( 'gsap-scrollto', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/ScrollToPlugin.min.js' );
 		wp_enqueue_script( 'portfolio-dist', get_stylesheet_directory_uri() . '/static/js/build.js', array(
 			'jquery',

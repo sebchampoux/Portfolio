@@ -1,7 +1,7 @@
 <nav class="projects-nav page__projects-nav">
 	<ul class="projects-nav__list">
 		<li class="projects-nav__item">
-			<a href="{{ project.prev.link }}" class="projects-nav__link">
+			<a href="{{ project.prev.link ?? prev.link }}" class="projects-nav__link">
 				<i class="projects-nav__icon icon-left-open-mini"></i>
 				<span class="projects-nav__label">{{ __('Précédent', 'portfolio') }}</span>
 			</a>
@@ -13,7 +13,7 @@
 			</a>
 		</li>
 		<li class="projects-nav__item">
-			<a href="{{ project.next.link }}" class="projects-nav__link">
+			<a href="{{ project.next.link ?? next.link }}" class="projects-nav__link">
 				<span class="projects-nav__label">{{ __('Suivant', 'portfolio') }}</span>
 				<i class="projects-nav__icon icon-right-open-mini"></i>
 			</a>

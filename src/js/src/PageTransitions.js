@@ -18,7 +18,12 @@ export class PageTransitions {
 		barba.init({
 			transitions: [
 				{
-
+					name: 'home',
+					namespace: 'front-page'
+				},
+				{
+					name: 'single-project',
+					namespace: 'single-projet'
 				}
 			]
 		});
