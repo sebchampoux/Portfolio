@@ -54,6 +54,6 @@ module.exports = {
 		port: 8081
 	},
 	plugins: [
-		new UglifyJsPlugin()
+		// new UglifyJsPlugin()
 	]
 };

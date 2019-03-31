@@ -1,18 +1,28 @@
+import { TweenMax } from 'gsap/all';
+
 /**
  * SmoothScroll
  */
-export default {
-	smoothScrollSpeed: 1, // en secondes
+export class SmoothScroll {
+	/**
+	 * @constructor
+	 *
+	 * @param {Number} speed - Vitesse de défilement de la page, en secondes
+	 */
+	constructor(speed = 1) {
+		this.scrollSpeed = speed;
+	}
 
 	/**
-	 * SmoothScroll jusqu'à un point X
-	 * @param {Number|String} target - Endroit jusqu'où on veut smoothScroll
-	 * @param {Number} offsetY - Offset pour éviter que le contenu soit caché sous la nav
+	 * Scroll to target
+	 *
+	 * @param {HTMLElement} target
+	 * @param {Number} offsetY
 	 */
 	smoothScrollTo(target, offsetY = 0) {
-		TweenLite.to(
+		TweenMax.to(
 			window,
-			this.smoothScrollSpeed,
+			this.scrollSpeed,
 			{
 				scrollTo: {
 					y: target,
@@ -20,5 +30,5 @@ export default {
 				}
 			}
 		);
-	},
-};
+	}
+}

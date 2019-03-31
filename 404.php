@@ -6,5 +6,6 @@
  * Time: 18:37
  */
 
-$context = Timber::get_context();
+$context             = Timber::get_context();
+$context['template'] = 'error-404';
 Timber::render( array( '404.twig', 'index.twig' ), $context );

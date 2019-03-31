@@ -10,7 +10,7 @@
 					{{ project.contexte_realisation }}{% if project.en_equipe %}{{ __(', réalisé avec', 'portfolio') }}{% endif %}
 					{% for coequipier in project.meta('coequipiers') %}
 						{% if coequipier.portfolio_coequipier %}
-							<a href="{{ coequipier.portfolio_coequipier }}">{{ coequipier.nom_coequipier }}</a>{% if loop.revindex == 2 %}{{ __(' et ', 'portfolio') }}{% elseif loop.revindex > 2 %}{{ ', ' }}{% endif %}
+							<a href="{{ coequipier.portfolio_coequipier }}" target="_blank">{{ coequipier.nom_coequipier }}</a>{% if loop.revindex == 2 %}{{ __(' et ', 'portfolio') }}{% elseif loop.revindex > 2 %}{{ ', ' }}{% endif %}
 						{% else %}
 							{{ coequipier.nom_coequipier }}{% if loop.revindex == 2 %}{{ __(' et ', 'portfolio') }}{% elseif loop.revindex > 2 %}{{ ', ' }}{% endif %}
 						{% endif %}

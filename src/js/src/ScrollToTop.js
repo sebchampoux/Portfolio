@@ -1,62 +1,69 @@
 const $ = jQuery;
 
-import SmoothScroll from './SmoothScroll';
+import { SmoothScroll } from './SmoothScroll';
+import { TweenMax } from 'gsap/all';
 
-export default {
-	apparitionPoint: 250,
-	isVisible: false,
-	transitionSpeed: 0.2, // en secondes
-	initialState: {
-		display: 'none',
-		opacity: 0
-	},
-	visibleState: {
-		display: 'block',
-		opacity: 1
-	},
-
+/**
+ * Bouton scroll back to top
+ */
+export class ScrollToTop {
 	/**
-	 * DOMReady
+	 * @constructor
 	 */
-	init() {
-		this.scrollTop = $('.js-back-to-top');
+	constructor() {
+		this.props = {
+			apparitionPoint: 250,
+			isVisible: false,
+			transitionSpeed: 0.2, // en secondes
+			initialState: {
+				display: 'none',
+				opacity: 0
+			},
+			visibleState: {
+				display: 'block',
+				opacity: 1
+			},
+		};
 
-		// Caché initialement
+		this.root = $('.js-back-to-top');
+
 		TweenMax.set(
-			this.scrollTop,
-			this.initialState
+			this.root,
+			this.props.initialState
 		);
 
-		// Events
-		this.scrollTop.on('click', () => {
-			SmoothScroll.smoothScrollTo(0);
+		this.smoothScroll = new SmoothScroll();
+
+		// Évènement clic
+		this.root.on('click', () => {
+			this.smoothScroll.smoothScrollTo(0);
 		});
-	},
+	}
 
 	/**
 	 * Lors du scroll de la page
 	 * @param scrollY {Number} - valeur de ScrollY
 	 */
 	onPageScroll(scrollY) {
-		let isPastApparitionPoint = scrollY >= this.apparitionPoint;
-		let notPastApparitionPoint = scrollY <= this.apparitionPoint;
+		let isPastApparitionPoint = scrollY >= this.props.apparitionPoint;
+		let notPastApparitionPoint = scrollY <= this.props.apparitionPoint;
 
-		if (isPastApparitionPoint && !this.isVisible) {
+		if (isPastApparitionPoint && !this.props.isVisible) {
 			// Apparition
-			this.isVisible = true;
+			this.props.isVisible = true;
 			TweenMax.to(
-				this.scrollTop,
-				this.transitionSpeed,
-				this.visibleState
+				this.root,
+				this.props.transitionSpeed,
+				this.props.visibleState
 			);
-		} else if (notPastApparitionPoint && this.isVisible) {
+		} else if (notPastApparitionPoint && this.props.isVisible) {
 			// Disparition
-			this.isVisible = false;
+			this.props.isVisible = false;
 			TweenMax.to(
-				this.scrollTop,
-				this.transitionSpeed,
-				this.initialState
+				this.root,
+				this.props.transitionSpeed,
+				this.props.initialState
 			);
 		}
-	},
-};
+	}
+}

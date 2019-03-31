@@ -2,8 +2,8 @@ import { TweenMax, TimelineMax } from 'gsap/all';
 
 const $ = jQuery;
 
-import SmoothScroll from './SmoothScroll';
-import Menu from './Menu';
+import { SmoothScroll } from './SmoothScroll';
+import { MainMenu } from './MainMenu';
 
 /**
  * Pour la zone hero de la page d'accueil
@@ -11,12 +11,14 @@ import Menu from './Menu';
 export class HeroArea {
 	/**
 	 * @constructor
+	 *
+	 * @param {MainMenu} mainMenu - Menu principal
 	 */
-	constructor() {
+	constructor(mainMenu) {
+		this.mainMenu = mainMenu;
+
 		if(this.getElements()) {
 			this.attachEvents();
-			// this.setupAnimations();
-			// this.animateIn();
 		}
 	}
 
@@ -33,6 +35,8 @@ export class HeroArea {
 		this.image = $('.js-hero-area__feat-img');
 		this.textbox = $('.js-hero-area__text-box');
 
+		this.smoothScroll = new SmoothScroll();
+
 		return true;
 	}
 
@@ -41,12 +45,12 @@ export class HeroArea {
 	 */
 	attachEvents() {
 		// Bouton projets
-		const navHeight = Menu.getMainNavHeight();
+		const navHeight = this.mainMenu.getMainMenuHeight();
 		const target = this.projectsButton.attr('href');
 
 		this.projectsButton.on('click', e => {
 			e.preventDefault();
-			SmoothScroll.smoothScrollTo(
+			this.smoothScroll.smoothScrollTo(
 				target,
 				navHeight
 			);
@@ -56,7 +60,7 @@ export class HeroArea {
 	/**
 	 * Mise en place des animations entrée/sortie
 	 */
-	setupAnimations() {
+	/*setupAnimations() {
 		this.tl = new TimelineMax({
 			paused: true
 		});
@@ -68,12 +72,12 @@ export class HeroArea {
 		this.tl.addLabel('elements-in');
 		this.tl.add(TweenMax.to(this.image, 0.8, { 'clip-path': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: Power1.easeOut }));
 		this.tl.add(TweenMax.to(this.textbox, 0.8, { 'clip-path': 'polygon(-5% -5%, 100% -5%, 100% 100%, -5% 100%)', ease: Power1.easeOut }), '-=0.2');
-	}
+	}/**/
 
 	/**
 	 * Animation d'entrée
 	 */
-	animateIn() {
+	/*animateIn() {
 		this.tl.play();
-	}
+	}/**/
 }
