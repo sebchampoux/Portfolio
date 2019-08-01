@@ -1,8 +1,10 @@
 
-/**
-	Fichiers de base
- */
-@import "base/_all";
+/* Settings */
+@import "settings/variables";
+
+/* Tools */
+@import "tools/functions";
+@import "tools/utils";
 
 /**
 	Librairies
