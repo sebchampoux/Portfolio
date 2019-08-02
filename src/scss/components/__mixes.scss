@@ -1,10 +1,8 @@
 /* ===============================
-	Pour les mixes (modifient un bloc selon son positionnement dans un autre bloc)
+	Pour les mixes (éléments qui utilisent les styles d'un autre bloc)
 	https://en.bem.info/methodology/quick-start/#mix
 =============================== */
 
-@import "a-propos__bg-coaster";
-@import "competences-distinctions__bg-coaster";
 @import "competences-distinctions__competences";
 @import "fiche-projet__text-box";
 @import "footer__reseaux-sociaux";
@@ -13,7 +11,5 @@
 @import "main-nav__menu";
 @import "main-nav__reseaux-sociaux";
 @import "page__back-to-top";
-@import "page__contact-form";
-@import "page__loading";
 @import "page__main-nav";
 @import "page__projects-nav";

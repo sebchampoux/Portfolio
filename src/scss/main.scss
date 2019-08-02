@@ -6,16 +6,19 @@
 @import "tools/functions";
 @import "tools/utils";
 
-/**
-	Librairies
- */
+/* Generics */
 @import "vendor/bootstrap/bootstrap-reboot";
-@import "vendor/bootstrap/bootstrap-grid";
-@import "vendor/hamburgers/hamburgers";
 
-/**
-	Partials, components, mixes
- */
-@import "partials/_all";
-@import "components/_all";
-@import "mixes/_all";
+/* Elements */
+@import "elements/typography";
+
+/* Objects/partials */
+@import "vendor/bootstrap/bootstrap-grid";
+@import "partials/_partials";
+
+/* Components */
+@import "vendor/hamburgers/hamburgers";
+@import "components/_blocks";
+@import "components/_mixes";
+
+/* Utilities */
