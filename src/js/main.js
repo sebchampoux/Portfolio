@@ -4,26 +4,12 @@ import { MainMenu } from './src/MainMenu';
 import { ScrollToTop } from './src/ScrollToTop';
 import { HeroArea } from './src/HeroArea';
 
-jQuery(document).ready($ => {
-	const win = $(window);
-
+document.addEventListener('DOMContentLoaded', $ => {
 	objectFitImages();
 
-	// Initialisation des éléments
-	const mainMenu = new MainMenu();
-	const scrollToTop = new ScrollToTop();
-	const heroArea = new HeroArea(mainMenu);
-
-	// Évènements scroll
-	win.on('scroll', e => {
-		const scrollY = e.currentTarget.scrollY;
-		mainMenu.onPageScroll(scrollY);
-		scrollToTop.onPageScroll(scrollY);
-	});
-
-	// Évènements resize
-	win.on('resize', e => {
-		const width = e.currentTarget.innerWidth;
-		mainMenu.onPageResize(width);
+	// Temporaire, seulement pour des tests
+	var hamburger = document.querySelector('.js-hamburger');
+	hamburger.parentNode.addEventListener('click', e => {
+		hamburger.classList.toggle('is-active');
 	});
 });

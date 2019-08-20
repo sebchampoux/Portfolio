@@ -1,38 +1,18 @@
-<nav class="main-nav js-main-nav page__main-nav">
-	{# Main menu #}
-	<div class="main-nav__menu-wrapper js-main-nav__menu-wrapper">
-		{% if top_menu.items %}
-			<ul class="menu main-nav__menu">
-				{# Items du menu #}
-				{% for menu_item in top_menu.items %}
-					<li class="menu__item js-menu__item {{ menu_item.classes|join(' ') }}">
-						<a class="menu__link js-main-nav__link" href="{{ menu_item.link }}">{{ menu_item.title }}</a>
-					</li>
-				{% endfor %}
-
-				{# Langues #}
-				{% if languages %}
-					{% for lang in languages if lang.active == 0 %}
-						<li class="menu__item js-menu__item">
-							<a class="menu__link menu__link--lang js-main-nav__link"
-							   href="{{ lang.url }}">{{ lang.native_name }}</a>
-						</li>
-					{% endfor %}
-				{% endif %}
-			</ul>
-		{% endif %}
-
-		{# Réseaux sociaux #}
-		{% include 'partials/misc/social-networks.twig' with {
-			'list_class': 'main-nav__reseaux-sociaux js-main-nav__reseaux-sociaux',
-			'links_class': 'reseaux-sociaux__link--size--small'
-		} %}
+<nav class="main-nav page__main-nav">
+    <div class="main-nav__option main-nav__option--burger">
+        <div class="hamburger js-hamburger main-nav__hamburger hamburger--elastic">
+            <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+            </div>
+        </div>
+    </div>
+	<div class="main-nav__option main-nav__option--email">
+		{# TODO Icône temporaire #}
+		<svg width="50" height="40" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path fill="#fff" d="M24 21h-24v-18h24v18zm-23-16.477v15.477h22v-15.477l-10.999 10-11.001-10zm21.089-.523h-20.176l10.088 9.171 10.088-9.171z"/></svg>
 	</div>
-
-	{# Hamburger #}
-	<div class="hamburger js-hamburger main-nav__hamburger hamburger--collapse">
-		<div class="hamburger-box">
-			<div class="hamburger-inner"></div>
-		</div>
-	</div>
+	{% if languages %}
+		{% for lang in languages if lang.active == 0 %}
+			<a href="{{ lang.url }}" class="main-nav__option main-nav__option--lang">{{ lang.language_code }}</a>
+		{% endfor %}	
+	{% endif %}
 </nav>

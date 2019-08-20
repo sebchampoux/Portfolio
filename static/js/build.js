@@ -6278,27 +6278,13 @@ var _HeroArea = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-jQuery(document).ready(function ($) {
-	var win = $(window);
-
+document.addEventListener('DOMContentLoaded', function ($) {
 	(0, _objectFitImages2.default)();
 
-	// Initialisation des éléments
-	var mainMenu = new _MainMenu.MainMenu();
-	var scrollToTop = new _ScrollToTop.ScrollToTop();
-	var heroArea = new _HeroArea.HeroArea(mainMenu);
-
-	// Évènements scroll
-	win.on('scroll', function (e) {
-		var scrollY = e.currentTarget.scrollY;
-		mainMenu.onPageScroll(scrollY);
-		scrollToTop.onPageScroll(scrollY);
-	});
-
-	// Évènements resize
-	win.on('resize', function (e) {
-		var width = e.currentTarget.innerWidth;
-		mainMenu.onPageResize(width);
+	// Temporaire, seulement pour des tests
+	var hamburger = document.querySelector('.js-hamburger');
+	hamburger.parentNode.addEventListener('click', function (e) {
+		hamburger.classList.toggle('is-active');
 	});
 });
 
