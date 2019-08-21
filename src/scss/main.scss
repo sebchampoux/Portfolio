@@ -19,6 +19,6 @@
 /* Components */
 @import "vendor/hamburgers/hamburgers";
 @import "components/_blocks";
-@import "components/_mixes";
 
-/* Utilities */
+/* Utilities, mixes and other high-specificity stuff */
+@import "mixes/_mixes";
