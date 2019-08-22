@@ -1,0 +1,11 @@
+{% set level = level ?: 0 %}
+<ul class="menu menu--level-{{ level }}">
+    {% for leaf in branch %}
+        <li class="menu__item {{ leaf.classes|join(' ') }}">
+            <a href="{{ leaf.link }}" class="menu__link">{{ leaf.title }}</a>
+            {% if leaf.children %}
+                {% include "partials/navigation/menu-branch.twig" with { branch: leaf.children, level: (level + 1) } %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

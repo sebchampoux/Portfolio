@@ -122,7 +122,8 @@ class Portfolio extends Timber\Site {
 				'menu_icon'     => 'dashicons-portfolio',
 				'show_in_menu'  => true,
 				'menu_position' => 20,
-				'show_in_rest'  => true
+				'show_in_rest'  => true,
+				'show_in_nav_menus' => true
 			)
 		);
 	}

@@ -1,0 +1,10 @@
+.window-overlay {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.window-overlay--menu {
+    background-color: $color-accent-primary;
+}

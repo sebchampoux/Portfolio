@@ -1,0 +1,6 @@
+<div class="window-overlay window-overlay--menu page__overlay">
+	{% if top_menu.items %}
+		{% include "partials/navigation/menu-branch.twig" with { branch: top_menu.items } %}
+	{% endif %}
+	{% include "partials/misc/social-networks.twig" %}
+</div>
