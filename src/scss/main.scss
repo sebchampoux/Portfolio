@@ -1,10 +1,10 @@
 
-/* Settings */
-@import "settings/variables";
-
 /* Tools */
 @import "tools/functions";
 @import "tools/utils";
+
+/* Settings */
+@import "settings/variables";
 
 /* Generics */
 @import "vendor/bootstrap/bootstrap-reboot";
