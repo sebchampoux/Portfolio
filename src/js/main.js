@@ -12,5 +12,5 @@ document.addEventListener('DOMContentLoaded', $ => {
 	});
 
 	// Initialisation des éléments
-	const home = new HomePage();
+	const home = new HomePage('Sébastien', 21);
 });
