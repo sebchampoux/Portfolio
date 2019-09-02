@@ -13,7 +13,7 @@ const sassOptions = {
 };
 
 function compileSass() {
-	return src('./src/scss/**/main.scss')
+	return src('./src/scss/main.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
@@ -29,8 +29,10 @@ function compileJS() {
 
 function compileOnChange() {
 	watch('./src/scss/**/*.scss', compileSass);
+	watch('./src/js/**/*.js', compileJS);
 }
 
 exports.default = compileSass;
 exports.watch = compileOnChange;
 exports.js = compileJS;
+exports.sass = compileSass;
