@@ -3,6 +3,8 @@ const sass = require('gulp-sass');
 const rename = require('gulp-rename');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
+const webpack_stream = require('webpack-stream');
+const webpack_config = require('./webpack.config');
 
 sass.compiler = require('node-sass');
 
@@ -20,9 +22,15 @@ function compileSass() {
 		.pipe(dest('./static/css'));
 }
 
+function compileJS() {
+	return webpack_stream(webpack_config)
+		.pipe(dest('./static'));
+}
+
 function compileOnChange() {
 	watch('./src/scss/**/*.scss', compileSass);
 }
 
 exports.default = compileSass;
 exports.watch = compileOnChange;
+exports.js = compileJS;
