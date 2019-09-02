@@ -1,8 +1,6 @@
 import objectFitImages from 'object-fit-images';
 
-import { MainMenu } from './src/MainMenu';
-import { ScrollToTop } from './src/ScrollToTop';
-import { HeroArea } from './src/HeroArea';
+import { HomePage } from './src/Homepage';
 
 document.addEventListener('DOMContentLoaded', $ => {
 	objectFitImages();
@@ -12,4 +10,7 @@ document.addEventListener('DOMContentLoaded', $ => {
 	hamburger.parentNode.addEventListener('click', e => {
 		hamburger.classList.toggle('is-active');
 	});
+
+	// Initialisation des éléments
+	const home = new HomePage();
 });
