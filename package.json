@@ -9,7 +9,8 @@
 		"build": "webpack",
 		"build-w": "webpack --watch",
 		"gulp": "gulp",
-		"gulp:w": "gulp watch"
+		"gulp:w": "gulp watch",
+		"test": "jest"
 	},
 	"dependencies": {
 		"object-fit-images": "^3.2.3"

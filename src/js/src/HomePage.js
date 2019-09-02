@@ -2,7 +2,16 @@
  * Page d'accueil
  */
 export class HomePage {
-    constructor() {
-        console.log('Hello, world !');
+    constructor(username, age) {
+        this.username = username;
+        this.age = age;
+    }
+
+    greetUser() {
+        return `Salut, ${this.username} !`;
+    }
+
+    grantAccess() {
+        return this.age >= 18;
     }
 }
