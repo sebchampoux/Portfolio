@@ -28,34 +28,6 @@
 	align-items: flex-start;
 
 	position: relative;
-
-	&::after {
-		content: '';
-		display: block;
-		border: 2px solid $color-dark-primary;
-
-		position: absolute;
-		top: 5%;
-		left: -5%;
-		width: 110%;
-		height: 85%;
-
-		pointer-events: none;
-
-		@include at-most(bp(xl)) {
-			height: 60%;
-		}
-
-		@include at-most(bp(lg)) {
-			height: 55%;
-			width: 105%;
-			left: -2.5%;
-		}
-
-		@include at-most(bp(md)) {
-			content: none;
-		}
-	}
 }
 
 .a-propos__ma-photo {
