@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'portfolio';
-  src: url('../font/portfolio.eot?61165685');
-  src: url('../font/portfolio.eot?61165685#iefix') format('embedded-opentype'),
-       url('../font/portfolio.woff2?61165685') format('woff2'),
-       url('../font/portfolio.woff?61165685') format('woff'),
-       url('../font/portfolio.ttf?61165685') format('truetype'),
-       url('../font/portfolio.svg?61165685#portfolio') format('svg');
+  src: url('../font/portfolio.eot?58337511');
+  src: url('../font/portfolio.eot?58337511#iefix') format('embedded-opentype'),
+       url('../font/portfolio.woff2?58337511') format('woff2'),
+       url('../font/portfolio.woff?58337511') format('woff'),
+       url('../font/portfolio.ttf?58337511') format('truetype'),
+       url('../font/portfolio.svg?58337511#portfolio') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'portfolio';
-    src: url('../font/portfolio.svg?61165685#portfolio') format('svg');
+    src: url('../font/portfolio.svg?58337511#portfolio') format('svg');
   }
 }
 */
@@ -24,7 +24,7 @@
   font-family: "portfolio";
   font-style: normal;
   font-weight: normal;
-  speak: none;
+  speak: never;
  
   display: inline-block;
   text-decoration: inherit;
@@ -60,6 +60,7 @@
 .icon-cancel:before { content: '\e802'; } /* '' */
 .icon-left-open-mini:before { content: '\e803'; } /* '' */
 .icon-home:before { content: '\e804'; } /* '' */
+.icon-github:before { content: '\f09b'; } /* '' */
 .icon-linked-in:before { content: '\f0e1'; } /* '' */
 .icon-doc-text:before { content: '\f0f6'; } /* '' */
 .icon-youtube:before { content: '\f16a'; } /* '' */
